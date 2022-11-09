@@ -1,0 +1,1813 @@
+# GENERATE CLIENT
+# $ openapi-generator-cli generate -i customer.v1.yaml -g csharp-netcore -o Symend.Client.Customer --additional-properties packageName=Symend.Client.Customer
+openapi: 3.0.1
+info:
+  title: Customer Service API
+  version: v1
+  description: API for Customer Domain Operations
+  contact:
+    name: Symend
+    url: 'https://github.com/symend-deployments/symend'
+    email: support@symend.com
+  termsOfService: 'https://github.com/symend-deployments/symend#copyright'
+servers:
+  - url: 'https://api.symend.io/customer'
+    description: Symend Customer
+paths:
+  /v1/accounts:
+    get:
+      tags:
+        - Accounts
+      operationId: ListAccounts
+      parameters:
+        - name: AccountKey
+          in: query
+          schema:
+            type: string
+          description: Return an account with a specific account key
+        - name: Email
+          in: query
+          schema:
+            type: string
+          description: An email to search for within the accounts list
+        - name: Phone
+          in: query
+          schema:
+            type: string
+          description: A phone number to search for within the accounts list
+        - name: Limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+          description: 'The maximum number of accounts to return per page, default 100.'
+        - name: Direction
+          in: query
+          schema:
+            type: string
+          description: 'The ordering direction of the results, ascending (default) or descending'
+        - name: OrderBy.Attribute
+          in: query
+          schema:
+            type: string
+          description: The account attribute to sort the results by
+        - name: OrderBy.LastValue
+          in: query
+          schema:
+            type: string
+          description: 'Inherited, unused'
+        - name: Cursor
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: 'The ID of the last account on the previous page, leave empty to fetch first page'
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSearchResultGuidPagedModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      - createdBy:
+                          id: 5a7bfeb0-d36d-453c-93f3-2423b8a549d4
+                        createdAt: '2019-08-24T14:15:22Z'
+                        updatedBy:
+                          id: 7256c4a8-674e-41e6-9d72-54881ca17c2a
+                        updatedAt: '2019-08-24T14:15:22Z'
+                        id: efd4e8c3-8b3e-498a-b8e8-27d7cafac8b8
+                        parentAccountId: 8a355acf-9a0d-4b91-9ab7-58c148c18629
+                        accountKey: string
+                        email: string
+                        email2: string
+                        phone: string
+                        phone2: string
+                        address: string
+                        addressLine2: string
+                        city: string
+                        stateProvince: string
+                        zipPostalCode: string
+                        country: string
+                        status: string
+                        statusDate: '2019-08-24T14:15:22Z'
+                        statusReason: string
+                        language: string
+                        isExcluded: true
+                        lastImportedAt: '2019-08-24T14:15:22Z'
+                        locale: string
+                    meta:
+                      limit: 100
+                      cursor: efd4e8c3-8b3e-498a-b8e8-27d7cafac8b8
+                      direction: asc
+                      orderBy:
+                        attribute: string
+                        lastValue: string
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: 'Returns a paginated list of all accounts. Optionally, searches within that list.'
+      summary: List Accounts
+    put:
+      tags:
+        - Accounts
+      operationId: CreateUpdateAccount
+      parameters:
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+            examples:
+              example-1:
+                value:
+                  Attributes:
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED48
+                      AttributeType: string
+                      Value: BAN111222
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED49
+                      AttributeType: string
+                      Value: nav
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED50
+                      AttributeType: dateTime
+                      Value: '2022-01-02 11:10:34'
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED51
+                      AttributeType: numberList
+                      Value:
+                        - 100
+                        - 200
+                        - 300
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+        description: Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint.
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponseResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: 53687924-113d-4510-a2ee-438e5b843347
+                      _links:
+                        - href: /v1/accounts/3fa85f64-5717-4562-b3fc-2c963f65afa6
+                          rel: self
+                          method: GET
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '422':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Creates an account or performs a partial update using its AccountKey as lookup.
+      summary: Create/Update Accounts
+  /v1/accounts/{id}:
+    get:
+      tags:
+        - Accounts
+      operationId: GetAccount
+      parameters:
+        - name: id
+          description: Account Id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountExtendedModelResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      createdBy:
+                        id: 8eb093ea-bab1-495e-8b9a-303d93877c75
+                      createdAt: '2019-08-24T14:15:22Z'
+                      updatedBy:
+                        id: 377a5f9d-8402-4150-8592-a4f886379383
+                      updatedAt: '2019-08-24T14:15:22Z'
+                      id: 8dd13a34-36bf-463b-b5bb-7efa5fa948c6
+                      attributes:
+                        - id: fb1dc062-1435-4390-8ab5-756281f9770c
+                          name: AccountKey
+                          value: BAN111222333
+                          category: Account
+                        - id: 53687924-113d-4510-a2ee-438e5b843347
+                          name: Balance
+                          value: 95.5
+                          category: Billing
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '422':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Returns a specific account using its GUID.
+      summary: Get an Account by Id
+    patch:
+      tags:
+        - Accounts
+      operationId: UpdateAccount
+      parameters:
+        - name: id
+          description: Account Id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+            examples:
+              example-1:
+                value:
+                  Attributes:
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED50
+                      AttributeType: dateTime
+                      Value: '2022-01-03 11:10:34'
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED51
+                      AttributeType: numberList
+                      Value:
+                        - 100
+                        - 200
+                        - 300
+                        - 400
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+        description: Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint.
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponseResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: c57c6cfe-f60d-4cef-927e-16fc51eacfe4
+                      _links:
+                        - href: /v1/accounts/3fa85f64-5717-4562-b3fc-2c963f65afa6
+                          rel: self
+                          method: GET
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '422':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Performs a partial update of an account using its GUID as lookup.
+      summary: Update an Account
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: The GUID associated with the desired account
+  /v1/accounts/{id}/actions/update-immediate:
+    patch:
+      tags:
+        - Accounts
+      operationId: UpdateAccountSync
+      parameters:
+        - name: id
+          description: Account Id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+            examples:
+              example-1:
+                value:
+                  Attributes:
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED49
+                      AttributeType: string
+                      Value: nav
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED50
+                      AttributeType: dateTime
+                      Value: '2022-01-02 11:10:34'
+                    - Id: 43A282C1-51A4-4F88-93CA-596EF474ED51
+                      AttributeType: numberList
+                      Value:
+                        - 100
+                        - 200
+                        - 300
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AccountForm'
+        description: Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponseResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: 181bd14f-085f-4688-9a2b-37b311392cde
+                      _links:
+                        - href: /v1/accounts/3fa85f64-5717-4562-b3fc-2c963f65afa6
+                          rel: self
+                          method: GET
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '422':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Performs a synchronous partial update of an account using its GUID as lookup.
+      summary: Update an Account synchronously
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: The GUID associated with the desired account
+  /v1/data-categories:
+    get:
+      operationId: GetDataCategories
+      parameters:
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringIEnumerableResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      - name: KeyDate
+                      - name: Customer
+                      - name: Contact
+                      - name: Billing
+                      - name: Account
+                      - name: Uncategorized
+                      - name: Property
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      tags:
+        - DataCategories
+      description: Returns the list of enumerated types to be used as a Category in the data-target-definitions endpoints.
+      summary: List Data Categories
+    parameters: []
+  /v1/data-target-definitions/dictionary:
+    get:
+      tags:
+        - DataTargetDefinitions
+      operationId: GetDataTargetDefinitionsDictionary
+      parameters:
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      000A0000-0A0A-0242-B264-08D9934C6167:
+                        name: Email
+                        dataType: string
+                        isPii: true
+                        isCustom: false
+                        category: contact
+                        allowMapping: true
+                        isUniqueId: false
+                        structureType: singular
+                        description: The primary email address to contact the account holder.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Returns a list of all possible attributes for an Account in a dictionary format.
+      summary: List of Data Target Definitions (dictionary)
+  /v1/data-target-definitions:
+    get:
+      tags:
+        - DataTargetDefinitions
+      operationId: GetDataTargetDefinitions
+      parameters:
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+        - $ref: '#/components/parameters/DataTargetDefinitionSearchCriteria'
+        - $ref: '#/components/parameters/PagingCriteria'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataTargetDefinitionSearchResultGuidPagedModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      - id: 000A0000-0A0A-0242-B264-08D9934C6167
+                        name: Email
+                        dataType: string
+                        isPii: true
+                        isCustom: false
+                        category: contact
+                        allowMapping: true
+                        isUniqueId: false
+                        structureType: singular
+                        description: The primary email address to contact the account holder.
+                    meta:
+                      limit: 100
+                      cursor: 000A0000-0A0A-0242-B264-08D9934C6167
+                      direction: asc
+                      orderBy:
+                        attribute: id
+                        lastValue: 000A0000-0A0A-0242-B264-08D9934C6167
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Returns a list of all possible attributes for an Account in a list format.
+      summary: List of Data Target Definitions
+    post:
+      tags:
+        - DataTargetDefinitions
+      operationId: CreateDataTargetDefinition
+      parameters:
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataTargetDefinitionForm'
+            examples:
+              example-1:
+                value:
+                  name: My String
+                  dataType: string
+                  isPii: false
+                  category: account
+                  structureType: single
+                  description: The definition of a non-identifying string I wish to map to accounts.
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DataTargetDefinitionForm'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DataTargetDefinitionForm'
+        description: ''
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataTargetDefinitionModelResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: 000A0000-0A0A-0242-B264-08D9934C6167
+                      name: Email
+                      dataType: string
+                      isPii: true
+                      isCustom: false
+                      category: contact
+                      allowMapping: true
+                      isUniqueId: false
+                      structureType: singular
+                      description: The primary email address to contact the account holder.
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+              examples:
+                example-InvalidName:
+                  value:
+                    code: SYM-400
+                    message: The request is malformed or invalid and cannot be processed.
+                    severity: warning
+                    error:
+                      traceId: 8fd837c1f66e5246844b978ed674efb9
+                      details:
+                        - code: SYM-400
+                          message: 'Name must start with a letter; Contains only letters, digits, underscore or dash; And must be at most 128 characters long.'
+                          target: name
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '422':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Create a new attribute for use in mapping Account data.
+      summary: Create a new Data Target Definition
+  /v1/data-target-definitions/{dataTargetDefinitionId}:
+    get:
+      tags:
+        - DataTargetDefinitions
+      operationId: GetDataTargetDefinition
+      parameters:
+        - name: dataTargetDefinitionId
+          description: Data Target Definition Id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataTargetDefinitionModelResultModel'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      id: 000A0000-0A0A-0242-B264-08D9934C6167
+                      name: Email
+                      dataType: string
+                      isPii: true
+                      isCustom: false
+                      category: contact
+                      allowMapping: true
+                      isUniqueId: false
+                      structureType: singular
+                      description: The primary email address to contact the account holder.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '422':
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: Returns a specific data attribute by its ID.
+      summary: Get Data Target Definition by Id
+    parameters:
+      - schema:
+          type: string
+        name: dataTargetDefinitionId
+        in: path
+        required: true
+        description: The GUID of the desired data target definition
+components:
+  schemas:
+    AccountForm:
+      type: object
+      x-examples:
+        example-1:
+          - Id: 43A282C1-51A4-4F88-93CA-596EF474ED49
+            AttributeType: string
+            Value: Joe
+          - Id: 43A282C1-51A4-4F88-93CA-596EF474ED50
+            AttributeType: dateTime
+            Value: '2022-01-02 11:10:34'
+          - Id: 43A282C1-51A4-4F88-93CA-596EF474ED51
+            AttributeType: numberList
+            Value:
+              - 100
+              - 200
+              - 300
+      title: ''
+      description: ''
+      properties:
+        attributes:
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/CustomerAttributeString'
+              - $ref: '#/components/schemas/CustomerAttributeNumber'
+              - $ref: '#/components/schemas/CustomerAttributeBoolean'
+              - $ref: '#/components/schemas/CustomerAttributeGuid'
+              - $ref: '#/components/schemas/CustomerAttributeDateTime'
+              - $ref: '#/components/schemas/CustomerAttributeStringList'
+              - $ref: '#/components/schemas/CustomerAttributeNumberList'
+              - $ref: '#/components/schemas/CustomerAttributeDateTimeList'
+              - $ref: '#/components/schemas/CustomerAttributeGuidList'
+              - $ref: '#/components/schemas/CustomerAttributeBooleanList'
+    AccountExtendedModel:
+      type: object
+      additionalProperties: false
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserModel'
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          $ref: '#/components/schemas/UserModel'
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        id:
+          type: string
+          format: uuid
+        parentAccountId:
+          type: string
+          format: uuid
+          nullable: true
+        childAccounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountExtendedModel'
+          nullable: true
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountAttributeResponseModel'
+      x-examples:
+        example-1:
+          createdBy:
+            id: cc6b99f1-422b-4f76-beda-55c2b38ab9e8
+          createdAt: '2019-08-24T14:15:22Z'
+          updatedBy:
+            id: a8da9ebd-11fb-4135-bc50-df0dce002240
+          updatedAt: '2019-08-24T14:15:22Z'
+          id: 5bd4c99f-8b0a-4170-b57f-d55b50e12f52
+          attributes:
+            - id: 5b0c3155-8819-4be8-8fc0-e69835b4c987
+              name: AccountKey
+              value: BAN111222333
+              category: Account
+            - id: de6b962d-7ccd-49a0-b5c1-f73aa8ee0e17
+              name: Balance
+              value: 95.5
+              category: Billing
+    AccountAttributeResponseModel:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        value:
+          type: string
+          nullable: true
+        category:
+          type: string
+          enum:
+            - unknown
+            - keyDate
+            - customer
+            - contact
+            - billing
+            - account
+            - uncategorized
+            - property
+      x-examples:
+        example-1:
+          id: 95081596-0835-491b-a86c-45f90cbb6ed7
+          name: AccountKey
+          value: BAN111222333
+          category: Account
+        example-2:
+          id: 4740b38b-df24-4f74-be72-ea8a2703a3ef
+          name: Balance
+          value: 95.5
+          category: Billing
+    AccountExtendedModelResultModel:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          $ref: '#/components/schemas/AccountExtendedModel'
+    AccountResponse:
+      type: object
+      additionalProperties: false
+      x-examples:
+        example-1:
+          id: 5d125863-4d6c-4062-bd3f-a1a633cf92f1
+          _links:
+            href: /thing/123
+            rel: self
+            method: GET
+      properties:
+        id:
+          type: string
+          format: uuid
+        _links:
+          type: array
+          nullable: true
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Common_ReferenceLink'
+    AccountResponseResultModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AccountResponse'
+      additionalProperties: false
+    AccountSearchResultGuidPagedModel:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountSearchResult'
+          nullable: true
+          readOnly: true
+        meta:
+          $ref: '#/components/schemas/GuidPagedMetadata'
+      additionalProperties: false
+    AccountSearchResult:
+      type: object
+      additionalProperties: false
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserModel'
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          $ref: '#/components/schemas/UserModel'
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        id:
+          type: string
+          format: uuid
+        parentAccountId:
+          type: string
+          format: uuid
+          nullable: true
+        accountKey:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        email2:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        phone2:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        addressLine2:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        stateProvince:
+          type: string
+          nullable: true
+        zipPostalCode:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        statusDate:
+          type: string
+          format: date-time
+          nullable: true
+        statusReason:
+          type: string
+          nullable: true
+        language:
+          type: string
+          nullable: true
+        isExcluded:
+          type: boolean
+          nullable: true
+        lastImportedAt:
+          type: string
+          format: date-time
+          nullable: true
+        locale:
+          type: string
+          nullable: true
+    SegmentGuidPagedModel:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Segment'
+          nullable: true
+          readOnly: true
+        meta:
+          $ref: '#/components/schemas/GuidPagedMetadata'
+      additionalProperties: false
+    DataTargetDefinitionCategory:
+      enum:
+        - unknown
+        - keyDate
+        - customer
+        - contact
+        - billing
+        - account
+        - uncategorized
+        - property
+      type: string
+    DataTargetDefinitionDataType:
+      enum:
+        - unknown
+        - string
+        - integer
+        - boolean
+        - dateTime
+        - number
+        - guid
+      type: string
+    DataTargetDefinitionDictionaryModel:
+      type: object
+      additionalProperties: false
+      x-examples:
+        example-1:
+          51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7:
+            name: firstname
+            dataType: String
+            isPii: true
+            isRequired: true
+            isCustom: true
+            category: Property
+            createdBy:
+              id: d4ca34cb-abc5-4f0e-aede-c120acdf6506
+            createdAt: '2021-11-01T18:49:15.5213827Z'
+            updatedBy:
+              id: 1f0e83cb-ca24-4225-8b82-22dd467aa8dc
+            updatedAt: '2021-11-01T18:49:15.5216114Z'
+            allowMapping: true
+            description: First Name
+          51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a8:
+            name: lastname
+            dataType: String
+            isPii: true
+            isRequired: true
+            isCustom: true
+            category: Property
+            createdBy:
+              id: e15bdd37-1175-4821-a66b-7b2e40bfb14c
+            createdAt: '2021-11-01T18:49:15.5213827Z'
+            updatedBy:
+              id: 42c3cb41-bece-453c-afe5-c2319fe828ed
+            updatedAt: '2021-11-01T18:49:15.5216114Z'
+            allowMapping: false
+            description: Last Name
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserModel'
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          $ref: '#/components/schemas/UserModel'
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        dataType:
+          $ref: '#/components/schemas/DataTargetDefinitionDataType'
+        isPii:
+          type: boolean
+        isRequired:
+          type: boolean
+        isCustom:
+          type: boolean
+        category:
+          $ref: '#/components/schemas/DataTargetDefinitionCategory'
+        allowMapping:
+          type: boolean
+        isUniqueId:
+          type: boolean
+        structureType:
+          $ref: '#/components/schemas/DataTargetDefinitionStructureType'
+        description:
+          type: string
+          nullable: true
+    DataTargetDefinitionForm:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          description: |-
+            Data Target Definition Property Name.
+
+            Name must start with a letter, can only contain letters, digits, underscore and dashes.
+        dataType:
+          type: string
+          enum:
+            - unknown
+            - string
+            - integer
+            - boolean
+            - datetime
+            - number
+            - guid
+        isPii:
+          type: boolean
+        category:
+          type: string
+          enum:
+            - keydate
+            - customer
+            - contact
+            - billing
+            - account
+            - uncategorized
+            - property
+        structureType:
+          type: string
+          enum:
+            - single
+            - collection
+        description:
+          type: string
+          nullable: true
+    DataTargetDefinitionModel:
+      type: object
+      additionalProperties: false
+      x-examples:
+        example-1:
+          id: 7c1a6562-c0b6-48fd-a03c-caf2b8d059c5
+          name: firstname
+          dataType: String
+          isPii: true
+          isRequired: true
+          isCustom: true
+          category: Property
+          allowMapping: true
+          isUniqueId: false
+          description: First Name
+          createdBy:
+            id: fe7a38f5-2b84-4a48-9b74-595f977d0926
+          createdAt: '2021-11-01T18:49:15.5213827Z'
+          updatedBy:
+            id: d69aa79e-2dea-423f-8ebc-42c2ec6e45b3
+          updatedAt: '2021-11-01T18:49:15.5216114Z'
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserModel'
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          $ref: '#/components/schemas/UserModel'
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          nullable: true
+        dataType:
+          $ref: '#/components/schemas/DataTargetDefinitionDataType'
+        isPii:
+          type: boolean
+        isRequired:
+          type: boolean
+        isCustom:
+          type: boolean
+        category:
+          $ref: '#/components/schemas/DataTargetDefinitionCategory'
+        allowMapping:
+          type: boolean
+        isUniqueId:
+          type: boolean
+        structureType:
+          $ref: '#/components/schemas/DataTargetDefinitionStructureType'
+        description:
+          type: string
+          nullable: true
+    DataTargetDefinitionModelResultModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataTargetDefinitionModel'
+      additionalProperties: false
+    GuidPagedMetadata:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int32
+          default: 100
+        cursor:
+          type: string
+          format: uuid
+          nullable: true
+        direction:
+          type: string
+          default: asc
+          nullable: true
+        orderBy:
+          $ref: '#/components/schemas/OrderBy'
+      additionalProperties: false
+    GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataTargetDefinitionDictionaryModel'
+          nullable: true
+      additionalProperties: false
+    OrderBy:
+      type: object
+      properties:
+        attribute:
+          type: string
+          nullable: true
+        lastValue:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PublishState:
+      enum:
+        - unknown
+        - draft
+        - pendingChanges
+        - published
+        - archived
+      type: string
+      x-examples:
+        example-1: unknown
+    SegmentCloneForm:
+      title: SegmentCloneForm
+      type: object
+      properties:
+        name:
+          type: string
+      x-examples:
+        example-1:
+          name: New High Risk
+    SegmentForm:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          nullable: true
+        rules:
+          anyOf:
+            - $ref: '#/components/schemas/RuleGroup'
+            - $ref: '#/components/schemas/Rule'
+    SegmentModel:
+      type: object
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserModel'
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          $ref: '#/components/schemas/UserModel'
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          nullable: true
+        draft:
+          $ref: '#/components/schemas/SegmentRevisionSummaryModel'
+        published:
+          $ref: '#/components/schemas/SegmentRevisionSummaryModel'
+        status:
+          $ref: '#/components/schemas/PublishState'
+      additionalProperties: false
+    SegmentModelResultModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SegmentModel'
+      additionalProperties: false
+      x-examples:
+        Draft segment that has not be published yet:
+          data:
+            id: 000a0000-0a0a-0242-7300-08d9ab985f18
+            name: high-risk update name
+            draft:
+              id: 000a0000-0a0a-0242-731f-08d9ab985f18
+              updatedAt: '2021-11-19T20:08:36.8614087'
+              version: 1
+            published: null
+            status: DRAFT
+            createdBy:
+              id: 2ea8915a-83cb-47b0-b5f2-cb62947a0a58
+            createdAt: '2021-11-19T20:08:36.8477479'
+            updatedBy:
+              id: 41a4fabd-ef74-4930-a910-494fe0882b1e
+            updatedAt: '2021-11-19T20:08:36.8477479'
+    SegmentRevisionModel:
+      type: object
+      additionalProperties: false
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserModel'
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          $ref: '#/components/schemas/UserModel'
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        id:
+          type: string
+          format: uuid
+        rules:
+          oneOf:
+            - $ref: '#/components/schemas/Rule'
+            - $ref: '#/components/schemas/RuleGroup'
+        segment:
+          $ref: '#/components/schemas/SegmentSummaryModel'
+        version:
+          type: integer
+          format: int32
+    SegmentRevisionModelResultModel:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SegmentRevisionModel'
+      additionalProperties: false
+      x-examples:
+        Example Segment Revision from Create Segment:
+          data:
+            id: 000a0000-0a0a-0242-23f6-08d9ab967e26
+            name: high-risk
+            rules:
+              condition: Or
+              rules:
+                - condition: And
+                  rules:
+                    - type: Definition
+                      field: fb095242-9327-4b1f-9f1c-d806ec229e01
+                      operator: Is
+                      value: A
+                      valueType: input
+                  type: Group
+              type: Group
+            segment:
+              status: DRAFT
+              id: 000a0000-0a0a-0242-2393-08d9ab967e26
+              updatedAt: '2021-11-19T19:55:11.2268072'
+            version: 1
+            createdBy:
+              id: c5d9c951-2002-4ce7-a5b9-b523080c02af
+            createdAt: '2021-11-19T19:55:12.7234639'
+            updatedBy:
+              id: 42674d11-73ac-48dd-89a9-f340436f4ed0
+            updatedAt: '2021-11-19T19:55:12.7234639'
+        Example Segment Revision From Publish:
+          data:
+            id: 000a0000-0a0a-0242-fcc5-08d9ab97f7d3
+            name: high-risk update name
+            rules:
+              condition: Or
+              rules:
+                - condition: And
+                  rules:
+                    - type: Definition
+                      field: 000a0000-0a0a-0242-39cc-08d9ab97b6ef
+                      operator: Is
+                      value: A
+                      valueType: input
+                  type: Group
+              type: Group
+            segment:
+              status: PUBLISHED
+              id: 000a0000-0a0a-0242-2393-08d9ab967e26
+              updatedAt: '2021-11-19T20:05:43.5920133'
+            version: 1
+            createdBy:
+              id: eb32e953-300f-4946-abdf-12253d381f55
+            createdAt: '2021-11-19T20:05:45.2393338'
+            updatedBy:
+              id: 13f61de6-1953-47dd-b145-21638dbafc20
+            updatedAt: '2021-11-19T20:05:45.2393338'
+    SegmentRevisionSummaryModel:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        version:
+          type: integer
+          format: int32
+    SegmentSummaryModel:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        status:
+          $ref: '#/components/schemas/PublishState'
+        name:
+          type: string
+    Rule:
+      title: Rule
+      type: object
+      x-examples:
+        Number Rule Example:
+          Type: Definition
+          Field: 00100000-0A0A-0242-E577-08D9FAF9B81E
+          Operator: Is
+          Value: 1.2345
+          ValueType: input
+        Integer Rule Example:
+          Type: Definition
+          Field: 00100000-0A0A-0242-E577-08D9FAF9B81E
+          Operator: Is
+          Value: 10
+          ValueType: input
+        String Rule Example:
+          Type: Definition
+          Field: 000A0000-0A0A-0242-B264-08D9934C6167
+          Operator: Is
+          Value: Hello World
+          ValueType: input
+        Boolean Example:
+          Type: Definition
+          Field: 9c4209ed-870d-487e-be1f-942b0590df00
+          Operator: Is
+          Value: true
+          ValueType: input
+      properties:
+        Type:
+          type: string
+          enum:
+            - Definition
+          default: Definition
+        Field:
+          type: string
+          format: uuid
+        Operator:
+          type: string
+          enum:
+            - unknown
+            - is
+            - isNot
+            - lessThan
+            - lessThanOrEqual
+            - greaterThan
+            - greaterThanOrEqual
+            - contains
+            - doesNotContain
+            - isEmpty
+            - isNotEmpty
+            - isToday
+            - isNotToday
+            - isBeforeToday
+            - isAfterToday
+            - isOneOf
+            - isNotOneOf
+            - wasInTheLast
+            - wasNotInTheLast
+            - isInTheNext
+            - isNotInTheNext
+        Value:
+          type: object
+          description: |-
+            Value to check against the operation.
+            Value is now expected to be of the Native Type of the Data Target Definition.
+
+            i.e. If your Data Target Definition is a Number
+            A value of: 10 will pass.
+            While a value of "10" will fail on publish due to the value not matching the correct data type.
+
+            Possible Special Key Values for Specific Data Target Definition Data Type:
+            - Datetime
+              - {{TODAY}} - This should be evaluated as the today date on evaluation of the rule during RUN TIME (NOT on publish during DESIGN TIME)
+              
+            Values for Specific Data Target Definition Data Types
+            - Datetime
+              - isBeforeToday - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.
+              - isAfterToday - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.
+              - wasInTheLast - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.
+              - wasNotInTheLast - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.
+              - isInTheNext - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.
+              - isNotInTheNext - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.
+        ValueType:
+          type: string
+          enum:
+            - unknown
+            - input
+            - attribute
+    RuleGroup:
+      title: RuleGroup
+      type: object
+      properties:
+        Condition:
+          type: string
+          enum:
+            - Or
+            - And
+        Rules:
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/Rule'
+              - $ref: '#/components/schemas/RuleGroup'
+        Type:
+          type: string
+          enum:
+            - Group
+          default: Group
+    StringIEnumerableResultModel:
+      title: ''
+      type: object
+      x-examples:
+        example-1:
+          data:
+            - name: unknown
+            - name: keyDate
+            - name: customer
+            - name: contact
+            - name: billing
+            - name: account
+            - name: uncategorized
+            - name: property
+      properties:
+        data:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+    UserModel:
+      type: object
+      title: UserModel
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          format: uuid
+    DataTargetDefinitionSearchResultGuidPagedModel:
+      title: DataTargetDefinitionSearchResultGuidPagedModel
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTargetDefinitionModel'
+          nullable: true
+          readOnly: true
+        meta:
+          $ref: '#/components/schemas/GuidPagedMetadata'
+      additionalProperties: false
+    CustomerAttribute:
+      title: CustomerAttribute
+      type: object
+      properties:
+        id:
+          type: string
+        attributeType:
+          type: string
+    CustomerAttributeString:
+      title: CustomerAttributeString
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: string
+    CustomerAttributeNumber:
+      title: CustomerAttributeNumber
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: number
+    CustomerAttributeBoolean:
+      title: CustomerAttributeBoolean
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: boolean
+    CustomerAttributeGuid:
+      title: CustomerAttributeGuid
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: string
+          format: uuid
+    CustomerAttributeDateTime:
+      title: CustomerAttributeDateTime
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: string
+          format: date-time
+    CustomerAttributeStringList:
+      title: CustomerAttributeStringList
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: string
+    CustomerAttributeNumberList:
+      title: CustomerAttributeNumberList
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: number
+    CustomerAttributeDateTimeList:
+      title: CustomerAttributeDateTimeList
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: string
+            format: date-time
+    CustomerAttributeGuidList:
+      title: CustomerAttributeGuidList
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: string
+            format: uuid
+    CustomerAttributeBooleanList:
+      title: CustomerAttributeBooleanList
+      allOf:
+        - $ref: '#/components/schemas/CustomerAttribute'
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: boolean
+    DataTargetDefinitionStructureType:
+      title: DataTargetDefinitionStructureType
+      type: string
+      enum:
+        - singular
+        - collection
+    Segment:
+      title: Segment
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        draft:
+          $ref: '#/components/schemas/SegmentRevisionSummaryModel'
+        published:
+          $ref: '#/components/schemas/SegmentRevisionSummaryModel'
+        status:
+          $ref: '#/components/schemas/PublishState'
+    Common_ErrorDetail:
+      title: ErrorDetail
+      type: object
+      example:
+        code: SYM-100
+        message: Field is required
+        target: 'addresses[0].firstLine'
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+      required:
+        - code
+        - message
+      description: Detail of an error. Typically used to describe validation failures.
+    Common_ErrorModel:
+      title: ErrorModel
+      type: object
+      description: Error model for non-success responses.
+      example:
+        code: SYM-001
+        message: Validation error
+        severity: critical
+        traceId: 885bef8bbc18649c
+        details:
+          - code: SYM-100
+            message: Field is required
+            target: 'addresses[0].firstLine'
+      properties:
+        code:
+          type: string
+          description: Server-defined error code
+        message:
+          type: string
+          description: Human-readable representation of the error.
+        severity:
+          type: string
+          enum:
+            - critical
+            - warning
+            - information
+          description: 'The severity of the error. One of `critical`, `warning`, or `information`.'
+        traceId:
+          type: string
+          description: Distributed trace ID of the request.
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/Common_ErrorDetail'
+      required:
+        - code
+        - message
+        - severity
+    Common_ReferenceLink:
+      title: ReferenceLink
+      type: object
+      description: Reference link for returning a HATEOAS style link to an API resource
+      properties:
+        href:
+          type: string
+          example: /thing/123
+        rel:
+          type: string
+          example: self
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            - HEAD
+          example: GET
+      example:
+        href: /thing/123
+        rel: self
+        method: GET
+  parameters:
+    DataTargetDefinitionSearchCriteria:
+      name: DataTargetDefinitionSearchCriteria
+      description: Data Target Definition Search Criteria
+      in: query
+      schema:
+        type: object
+        properties:
+          dataType:
+            $ref: '#/components/schemas/DataTargetDefinitionDataType'
+          category:
+            $ref: '#/components/schemas/DataTargetDefinitionCategory'
+          allowMapping:
+            type: boolean
+            nullable: true
+          isUniqueId:
+            type: boolean
+            nullable: true
+    PagingCriteria:
+      name: paging
+      description: Paging Criteria
+      in: query
+      schema:
+        $ref: '#/components/schemas/GuidPagedMetadata'
+    X-Sym-OrganizationId:
+      name: X-Sym-OrganizationId
+      in: header
+      description: Organization UUID of the client making the request
+      required: true
+      schema:
+        type: string
+        format: string
+        example: 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7
+  securitySchemes:
+    JSON_Web_Token:
+      type: http
+      description: 'JWT Authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - JSON_Web_Token: []
+tags:
+  - name: Accounts
+    description: Accounts
+  - name: CustomerTrail
+    description: Customer Trail
+  - name: DataCategories
+    description: Data Categories
+  - name: DataTargetDefinitions
+    description: Data Target Definitions

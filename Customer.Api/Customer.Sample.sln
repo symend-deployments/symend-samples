@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Sample", "Customer.Sample\Customer.Sample.csproj", "{FB982546-B34D-41F0-8EF3-D74537288B0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Symend.Client.Customer", "Symend.Client.Customer\src\Symend.Client.Customer\Symend.Client.Customer.csproj", "{AED5DE47-900E-47CA-8336-C63D41F0DF9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB982546-B34D-41F0-8EF3-D74537288B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB982546-B34D-41F0-8EF3-D74537288B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB982546-B34D-41F0-8EF3-D74537288B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB982546-B34D-41F0-8EF3-D74537288B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED5DE47-900E-47CA-8336-C63D41F0DF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED5DE47-900E-47CA-8336-C63D41F0DF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED5DE47-900E-47CA-8336-C63D41F0DF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED5DE47-900E-47CA-8336-C63D41F0DF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
