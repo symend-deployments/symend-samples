@@ -24,7 +24,7 @@ public class SampleClient : ISampleClient
     {
         var dataTargetDefinitions = await GetDtds(organizationId);
         
-        var newAccountForm = CreateNewAccountForm("AccountIdTestOrgDtd",organizationId, dataTargetDefinitions);
+        var newAccountForm = CreateNewAccountForm("Account-Id-Here",organizationId, dataTargetDefinitions);
         
         // Creates a new Account, we expect an SMS message to be delivered for this user
         var createEvent = await CreateUpdateAccount(organizationId, newAccountForm);
@@ -64,11 +64,11 @@ public class SampleClient : ISampleClient
         
         properties.Add(new(AccountFormAssembler.AddProperty("AccountKey", accountKey, dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Strategy", "Engaged Recovery", dataTypeDefinitions)));
-        properties.Add(new(AccountFormAssembler.AddProperty("Email", "rmacdonald@2106design.com", dataTypeDefinitions)));
-        properties.Add(new(AccountFormAssembler.AddProperty("Phone", "4039730455", dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("Email", "user@email.com", dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("Phone", "5555555555", dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("CC_Number", "4321", dataTypeDefinitions)));
-        properties.Add(new(AccountFormAssembler.AddProperty("First_Name", "Ryan", dataTypeDefinitions)));
-        properties.Add(new(AccountFormAssembler.AddProperty("Last_Name", "MacDonald", dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("First_Name", "John", dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("Last_Name", "Doe", dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Placement_Date", DateTime.Now, dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Episode_Date", DateTime.Now, dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("OrganizationIdCheck", organizationId, dataTypeDefinitions)));
