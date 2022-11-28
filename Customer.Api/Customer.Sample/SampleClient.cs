@@ -24,7 +24,7 @@ public class SampleClient : ISampleClient
     {
         var dataTargetDefinitions = await GetDtds(organizationId);
         
-        var newAccountForm = CreateNewAccountForm("AccountId",dataTargetDefinitions);
+        var newAccountForm = CreateNewAccountForm("AccountIdTestOrgDtd",organizationId, dataTargetDefinitions);
         
         // Creates a new Account, we expect an SMS message to be delivered for this user
         var createEvent = await CreateUpdateAccount(organizationId, newAccountForm);
@@ -43,21 +43,22 @@ public class SampleClient : ISampleClient
         var accounts = await GetAccounts(organizationId);
         foreach (var account in accounts) 
         {
-            var exitAccountForm = ExitAccountForm(account.AccountKey, dataTargetDefinitions);
+            var exitAccountForm = ExitAccountForm(account.AccountKey,organizationId, dataTargetDefinitions);
             var result = await CreateUpdateAccount(organizationId, exitAccountForm);
             Log.Logger.Information("Exited Account Id: {0}", result.Data.Id);    
         }
     }
 
-    private AccountForm ExitAccountForm(string accountKey, Dictionary<string, DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
+    private AccountForm ExitAccountForm(string accountKey, string organizationId, Dictionary<string, DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
     {
         var properties = new List<AccountFormAttributesInner>();
         properties.Add(new(AccountFormAssembler.AddProperty("AccountKey", accountKey, dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Exit_Reason", "PAID", dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("OrganizationIdCheck", organizationId, dataTypeDefinitions)));
         return new AccountForm { Attributes = properties }; 
     }
 
-    private AccountForm CreateNewAccountForm(string accountKey,Dictionary<string,DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
+    private AccountForm CreateNewAccountForm(string accountKey,string organizationId,Dictionary<string,DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
     {
         var properties = new List<AccountFormAttributesInner>();
         
@@ -68,8 +69,9 @@ public class SampleClient : ISampleClient
         properties.Add(new(AccountFormAssembler.AddProperty("CC_Number", "4321", dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("First_Name", "Ryan", dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Last_Name", "MacDonald", dataTypeDefinitions)));
-        properties.Add(new(AccountFormAssembler.AddProperty("Placement_Date", DateTimeOffset.Now, dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("Placement_Date", DateTime.Now, dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Episode_Date", DateTime.Now, dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("OrganizationIdCheck", organizationId, dataTypeDefinitions)));
         return new AccountForm { Attributes = properties }; 
     }
     private async Task<AccountExtendedModelResultModel> GetAccount(string organizationId, Guid id)
