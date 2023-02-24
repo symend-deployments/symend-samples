@@ -8,7 +8,7 @@ All URIs are relative to *https://api.symend.io/customer*
 
 <a name="getdatacategories"></a>
 # **GetDataCategories**
-> StringIEnumerableResultModel GetDataCategories (string xSymOrganizationId)
+> StringIEnumerableResultModel GetDataCategories (Guid xSymOrganizationId)
 
 List Data Categories
 
@@ -34,7 +34,7 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DataCategoriesApi(config);
-            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // string | Organization UUID of the client making the request
+            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // Guid | Organization UUID of the client making the request
 
             try
             {
@@ -77,7 +77,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **xSymOrganizationId** | **string** | Organization UUID of the client making the request |  |
+| **xSymOrganizationId** | **Guid** | Organization UUID of the client making the request |  |
 
 ### Return type
 

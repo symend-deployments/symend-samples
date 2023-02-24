@@ -60,6 +60,18 @@ namespace Symend.Client.Customer.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountFormAttributesInner" /> class
+        /// with the <see cref="CustomerAttributeInteger" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of CustomerAttributeInteger.</param>
+        public AccountFormAttributesInner(CustomerAttributeInteger actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "anyOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountFormAttributesInner" /> class
         /// with the <see cref="CustomerAttributeBoolean" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of CustomerAttributeBoolean.</param>
@@ -112,6 +124,18 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="actualInstance">An instance of CustomerAttributeNumberList.</param>
         public AccountFormAttributesInner(CustomerAttributeNumberList actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "anyOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountFormAttributesInner" /> class
+        /// with the <see cref="CustomerAttributeIntegerList" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of CustomerAttributeIntegerList.</param>
+        public AccountFormAttributesInner(CustomerAttributeIntegerList actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "anyOf";
@@ -192,6 +216,14 @@ namespace Symend.Client.Customer.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(CustomerAttributeInteger))
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(CustomerAttributeIntegerList))
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(CustomerAttributeNumber))
                 {
                     this._actualInstance = value;
@@ -210,7 +242,7 @@ namespace Symend.Client.Customer.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: CustomerAttributeBoolean, CustomerAttributeBooleanList, CustomerAttributeDateTime, CustomerAttributeDateTimeList, CustomerAttributeGuid, CustomerAttributeGuidList, CustomerAttributeNumber, CustomerAttributeNumberList, CustomerAttributeString, CustomerAttributeStringList");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: CustomerAttributeBoolean, CustomerAttributeBooleanList, CustomerAttributeDateTime, CustomerAttributeDateTimeList, CustomerAttributeGuid, CustomerAttributeGuidList, CustomerAttributeInteger, CustomerAttributeIntegerList, CustomerAttributeNumber, CustomerAttributeNumberList, CustomerAttributeString, CustomerAttributeStringList");
                 }
             }
         }
@@ -233,6 +265,16 @@ namespace Symend.Client.Customer.Model
         public CustomerAttributeNumber GetCustomerAttributeNumber()
         {
             return (CustomerAttributeNumber)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `CustomerAttributeInteger`. If the actual instance is not `CustomerAttributeInteger`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of CustomerAttributeInteger</returns>
+        public CustomerAttributeInteger GetCustomerAttributeInteger()
+        {
+            return (CustomerAttributeInteger)this.ActualInstance;
         }
 
         /// <summary>
@@ -283,6 +325,16 @@ namespace Symend.Client.Customer.Model
         public CustomerAttributeNumberList GetCustomerAttributeNumberList()
         {
             return (CustomerAttributeNumberList)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `CustomerAttributeIntegerList`. If the actual instance is not `CustomerAttributeIntegerList`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of CustomerAttributeIntegerList</returns>
+        public CustomerAttributeIntegerList GetCustomerAttributeIntegerList()
+        {
+            return (CustomerAttributeIntegerList)this.ActualInstance;
         }
 
         /// <summary>
@@ -421,6 +473,30 @@ namespace Symend.Client.Customer.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CustomerAttributeGuidList: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                newAccountFormAttributesInner = new AccountFormAttributesInner(JsonConvert.DeserializeObject<CustomerAttributeInteger>(jsonString, AccountFormAttributesInner.SerializerSettings));
+                // deserialization is considered successful at this point if no exception has been thrown.
+                return newAccountFormAttributesInner;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CustomerAttributeInteger: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                newAccountFormAttributesInner = new AccountFormAttributesInner(JsonConvert.DeserializeObject<CustomerAttributeIntegerList>(jsonString, AccountFormAttributesInner.SerializerSettings));
+                // deserialization is considered successful at this point if no exception has been thrown.
+                return newAccountFormAttributesInner;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CustomerAttributeIntegerList: {1}", jsonString, exception.ToString()));
             }
 
             try

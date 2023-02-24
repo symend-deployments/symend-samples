@@ -11,7 +11,7 @@ All URIs are relative to *https://api.symend.io/customer*
 
 <a name="createdatatargetdefinition"></a>
 # **CreateDataTargetDefinition**
-> DataTargetDefinitionModelResultModel CreateDataTargetDefinition (string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = null)
+> DataTargetDefinitionModelResultModel CreateDataTargetDefinition (Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = null)
 
 Create a new Data Target Definition
 
@@ -37,7 +37,7 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DataTargetDefinitionsApi(config);
-            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // string | Organization UUID of the client making the request
+            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // Guid | Organization UUID of the client making the request
             var dataTargetDefinitionForm = new DataTargetDefinitionForm(); // DataTargetDefinitionForm |  (optional) 
 
             try
@@ -81,7 +81,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **xSymOrganizationId** | **string** | Organization UUID of the client making the request |  |
+| **xSymOrganizationId** | **Guid** | Organization UUID of the client making the request |  |
 | **dataTargetDefinitionForm** | [**DataTargetDefinitionForm**](DataTargetDefinitionForm.md) |  | [optional]  |
 
 ### Return type
@@ -111,7 +111,7 @@ catch (ApiException e)
 
 <a name="getdatatargetdefinition"></a>
 # **GetDataTargetDefinition**
-> DataTargetDefinitionModelResultModel GetDataTargetDefinition (Guid dataTargetDefinitionId, string xSymOrganizationId)
+> DataTargetDefinitionModelResultModel GetDataTargetDefinition (Guid dataTargetDefinitionId, Guid xSymOrganizationId)
 
 Get Data Target Definition by Id
 
@@ -138,7 +138,7 @@ namespace Example
 
             var apiInstance = new DataTargetDefinitionsApi(config);
             var dataTargetDefinitionId = "dataTargetDefinitionId_example";  // Guid | Data Target Definition Id
-            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // string | Organization UUID of the client making the request
+            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // Guid | Organization UUID of the client making the request
 
             try
             {
@@ -182,7 +182,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **dataTargetDefinitionId** | **Guid** | Data Target Definition Id |  |
-| **xSymOrganizationId** | **string** | Organization UUID of the client making the request |  |
+| **xSymOrganizationId** | **Guid** | Organization UUID of the client making the request |  |
 
 ### Return type
 
@@ -210,7 +210,7 @@ catch (ApiException e)
 
 <a name="getdatatargetdefinitions"></a>
 # **GetDataTargetDefinitions**
-> DataTargetDefinitionSearchResultGuidPagedModel GetDataTargetDefinitions (string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = null, GuidPagedMetadata paging = null)
+> DataTargetDefinitionSearchResultGuidPagedModel GetDataTargetDefinitions (Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = null, GuidPagedMetadata paging = null)
 
 List of Data Target Definitions
 
@@ -236,7 +236,7 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DataTargetDefinitionsApi(config);
-            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // string | Organization UUID of the client making the request
+            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // Guid | Organization UUID of the client making the request
             var dataTargetDefinitionSearchCriteria = new GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter(); // GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter | Data Target Definition Search Criteria (optional) 
             var paging = new GuidPagedMetadata(); // GuidPagedMetadata | Paging Criteria (optional) 
 
@@ -281,7 +281,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **xSymOrganizationId** | **string** | Organization UUID of the client making the request |  |
+| **xSymOrganizationId** | **Guid** | Organization UUID of the client making the request |  |
 | **dataTargetDefinitionSearchCriteria** | [**GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter**](GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter.md) | Data Target Definition Search Criteria | [optional]  |
 | **paging** | [**GuidPagedMetadata**](GuidPagedMetadata.md) | Paging Criteria | [optional]  |
 
@@ -310,7 +310,7 @@ catch (ApiException e)
 
 <a name="getdatatargetdefinitionsdictionary"></a>
 # **GetDataTargetDefinitionsDictionary**
-> GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel GetDataTargetDefinitionsDictionary (string xSymOrganizationId)
+> GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel GetDataTargetDefinitionsDictionary (Guid xSymOrganizationId)
 
 List of Data Target Definitions (dictionary)
 
@@ -336,7 +336,7 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DataTargetDefinitionsApi(config);
-            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // string | Organization UUID of the client making the request
+            var xSymOrganizationId = 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7;  // Guid | Organization UUID of the client making the request
 
             try
             {
@@ -379,7 +379,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **xSymOrganizationId** | **string** | Organization UUID of the client making the request |  |
+| **xSymOrganizationId** | **Guid** | Organization UUID of the client making the request |  |
 
 ### Return type
 

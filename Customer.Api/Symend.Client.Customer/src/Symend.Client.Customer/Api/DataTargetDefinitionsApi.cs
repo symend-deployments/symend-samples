@@ -38,7 +38,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="dataTargetDefinitionForm"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DataTargetDefinitionModelResultModel</returns>
-        DataTargetDefinitionModelResultModel CreateDataTargetDefinition(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0);
+        DataTargetDefinitionModelResultModel CreateDataTargetDefinition(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0);
 
         /// <summary>
         /// Create a new Data Target Definition
@@ -51,7 +51,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="dataTargetDefinitionForm"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DataTargetDefinitionModelResultModel</returns>
-        ApiResponse<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionWithHttpInfo(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0);
+        ApiResponse<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionWithHttpInfo(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0);
         /// <summary>
         /// Get Data Target Definition by Id
         /// </summary>
@@ -63,7 +63,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DataTargetDefinitionModelResultModel</returns>
-        DataTargetDefinitionModelResultModel GetDataTargetDefinition(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0);
+        DataTargetDefinitionModelResultModel GetDataTargetDefinition(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0);
 
         /// <summary>
         /// Get Data Target Definition by Id
@@ -76,7 +76,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DataTargetDefinitionModelResultModel</returns>
-        ApiResponse<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionWithHttpInfo(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0);
+        ApiResponse<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionWithHttpInfo(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0);
         /// <summary>
         /// List of Data Target Definitions
         /// </summary>
@@ -89,7 +89,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="paging">Paging Criteria (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DataTargetDefinitionSearchResultGuidPagedModel</returns>
-        DataTargetDefinitionSearchResultGuidPagedModel GetDataTargetDefinitions(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0);
+        DataTargetDefinitionSearchResultGuidPagedModel GetDataTargetDefinitions(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0);
 
         /// <summary>
         /// List of Data Target Definitions
@@ -103,7 +103,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="paging">Paging Criteria (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DataTargetDefinitionSearchResultGuidPagedModel</returns>
-        ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsWithHttpInfo(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0);
+        ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsWithHttpInfo(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0);
         /// <summary>
         /// List of Data Target Definitions (dictionary)
         /// </summary>
@@ -114,7 +114,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel</returns>
-        GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel GetDataTargetDefinitionsDictionary(string xSymOrganizationId, int operationIndex = 0);
+        GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel GetDataTargetDefinitionsDictionary(Guid xSymOrganizationId, int operationIndex = 0);
 
         /// <summary>
         /// List of Data Target Definitions (dictionary)
@@ -126,7 +126,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel</returns>
-        ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryWithHttpInfo(string xSymOrganizationId, int operationIndex = 0);
+        ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryWithHttpInfo(Guid xSymOrganizationId, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -148,7 +148,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataTargetDefinitionModelResultModel</returns>
-        System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionAsync(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionAsync(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a new Data Target Definition
@@ -162,7 +162,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataTargetDefinitionModelResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DataTargetDefinitionModelResultModel>> CreateDataTargetDefinitionWithHttpInfoAsync(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DataTargetDefinitionModelResultModel>> CreateDataTargetDefinitionWithHttpInfoAsync(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get Data Target Definition by Id
         /// </summary>
@@ -175,7 +175,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataTargetDefinitionModelResultModel</returns>
-        System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionAsync(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionAsync(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get Data Target Definition by Id
@@ -189,7 +189,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataTargetDefinitionModelResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DataTargetDefinitionModelResultModel>> GetDataTargetDefinitionWithHttpInfoAsync(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DataTargetDefinitionModelResultModel>> GetDataTargetDefinitionWithHttpInfoAsync(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List of Data Target Definitions
         /// </summary>
@@ -203,7 +203,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataTargetDefinitionSearchResultGuidPagedModel</returns>
-        System.Threading.Tasks.Task<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsAsync(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsAsync(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List of Data Target Definitions
@@ -218,7 +218,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataTargetDefinitionSearchResultGuidPagedModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel>> GetDataTargetDefinitionsWithHttpInfoAsync(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel>> GetDataTargetDefinitionsWithHttpInfoAsync(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List of Data Target Definitions (dictionary)
         /// </summary>
@@ -230,7 +230,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel</returns>
-        System.Threading.Tasks.Task<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List of Data Target Definitions (dictionary)
@@ -243,7 +243,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel>> GetDataTargetDefinitionsDictionaryWithHttpInfoAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel>> GetDataTargetDefinitionsDictionaryWithHttpInfoAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -372,7 +372,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="dataTargetDefinitionForm"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DataTargetDefinitionModelResultModel</returns>
-        public DataTargetDefinitionModelResultModel CreateDataTargetDefinition(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0)
+        public DataTargetDefinitionModelResultModel CreateDataTargetDefinition(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> localVarResponse = CreateDataTargetDefinitionWithHttpInfo(xSymOrganizationId, dataTargetDefinitionForm);
             return localVarResponse.Data;
@@ -386,14 +386,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="dataTargetDefinitionForm"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DataTargetDefinitionModelResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionWithHttpInfo(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionWithHttpInfo(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->CreateDataTargetDefinition");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -455,7 +449,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataTargetDefinitionModelResultModel</returns>
-        public async System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionAsync(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> CreateDataTargetDefinitionAsync(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> localVarResponse = await CreateDataTargetDefinitionWithHttpInfoAsync(xSymOrganizationId, dataTargetDefinitionForm, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -470,14 +464,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataTargetDefinitionModelResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel>> CreateDataTargetDefinitionWithHttpInfoAsync(string xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel>> CreateDataTargetDefinitionWithHttpInfoAsync(Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = default(DataTargetDefinitionForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->CreateDataTargetDefinition");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
@@ -540,7 +528,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DataTargetDefinitionModelResultModel</returns>
-        public DataTargetDefinitionModelResultModel GetDataTargetDefinition(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0)
+        public DataTargetDefinitionModelResultModel GetDataTargetDefinition(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> localVarResponse = GetDataTargetDefinitionWithHttpInfo(dataTargetDefinitionId, xSymOrganizationId);
             return localVarResponse.Data;
@@ -554,14 +542,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DataTargetDefinitionModelResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionWithHttpInfo(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionWithHttpInfo(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->GetDataTargetDefinition");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -620,7 +602,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataTargetDefinitionModelResultModel</returns>
-        public async System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionAsync(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DataTargetDefinitionModelResultModel> GetDataTargetDefinitionAsync(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel> localVarResponse = await GetDataTargetDefinitionWithHttpInfoAsync(dataTargetDefinitionId, xSymOrganizationId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -635,14 +617,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataTargetDefinitionModelResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel>> GetDataTargetDefinitionWithHttpInfoAsync(Guid dataTargetDefinitionId, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionModelResultModel>> GetDataTargetDefinitionWithHttpInfoAsync(Guid dataTargetDefinitionId, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->GetDataTargetDefinition");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
@@ -703,7 +679,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="paging">Paging Criteria (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DataTargetDefinitionSearchResultGuidPagedModel</returns>
-        public DataTargetDefinitionSearchResultGuidPagedModel GetDataTargetDefinitions(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0)
+        public DataTargetDefinitionSearchResultGuidPagedModel GetDataTargetDefinitions(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel> localVarResponse = GetDataTargetDefinitionsWithHttpInfo(xSymOrganizationId, dataTargetDefinitionSearchCriteria, paging);
             return localVarResponse.Data;
@@ -718,14 +694,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="paging">Paging Criteria (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DataTargetDefinitionSearchResultGuidPagedModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsWithHttpInfo(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsWithHttpInfo(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->GetDataTargetDefinitions");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -792,7 +762,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataTargetDefinitionSearchResultGuidPagedModel</returns>
-        public async System.Threading.Tasks.Task<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsAsync(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DataTargetDefinitionSearchResultGuidPagedModel> GetDataTargetDefinitionsAsync(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel> localVarResponse = await GetDataTargetDefinitionsWithHttpInfoAsync(xSymOrganizationId, dataTargetDefinitionSearchCriteria, paging, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -808,14 +778,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataTargetDefinitionSearchResultGuidPagedModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel>> GetDataTargetDefinitionsWithHttpInfoAsync(string xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<DataTargetDefinitionSearchResultGuidPagedModel>> GetDataTargetDefinitionsWithHttpInfoAsync(Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = default(GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter), GuidPagedMetadata paging = default(GuidPagedMetadata), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->GetDataTargetDefinitions");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
@@ -881,7 +845,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel</returns>
-        public GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel GetDataTargetDefinitionsDictionary(string xSymOrganizationId, int operationIndex = 0)
+        public GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel GetDataTargetDefinitionsDictionary(Guid xSymOrganizationId, int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> localVarResponse = GetDataTargetDefinitionsDictionaryWithHttpInfo(xSymOrganizationId);
             return localVarResponse.Data;
@@ -894,14 +858,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryWithHttpInfo(string xSymOrganizationId, int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryWithHttpInfo(Guid xSymOrganizationId, int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->GetDataTargetDefinitionsDictionary");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -958,7 +916,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel</returns>
-        public async System.Threading.Tasks.Task<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> GetDataTargetDefinitionsDictionaryAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel> localVarResponse = await GetDataTargetDefinitionsDictionaryWithHttpInfoAsync(xSymOrganizationId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -972,14 +930,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel>> GetDataTargetDefinitionsDictionaryWithHttpInfoAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel>> GetDataTargetDefinitionsDictionaryWithHttpInfoAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataTargetDefinitionsApi->GetDataTargetDefinitionsDictionary");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 

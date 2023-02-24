@@ -38,7 +38,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountResponseResultModel</returns>
-        AccountResponseResultModel CreateUpdateAccount(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
+        AccountResponseResultModel CreateUpdateAccount(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
 
         /// <summary>
         /// Create/Update Accounts
@@ -51,7 +51,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountResponseResultModel</returns>
-        ApiResponse<AccountResponseResultModel> CreateUpdateAccountWithHttpInfo(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
+        ApiResponse<AccountResponseResultModel> CreateUpdateAccountWithHttpInfo(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
         /// <summary>
         /// Get an Account by Id
         /// </summary>
@@ -63,7 +63,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountExtendedModelResultModel</returns>
-        AccountExtendedModelResultModel GetAccount(Guid id, string xSymOrganizationId, int operationIndex = 0);
+        AccountExtendedModelResultModel GetAccount(Guid id, Guid xSymOrganizationId, int operationIndex = 0);
 
         /// <summary>
         /// Get an Account by Id
@@ -76,7 +76,46 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountExtendedModelResultModel</returns>
-        ApiResponse<AccountExtendedModelResultModel> GetAccountWithHttpInfo(Guid id, string xSymOrganizationId, int operationIndex = 0);
+        ApiResponse<AccountExtendedModelResultModel> GetAccountWithHttpInfo(Guid id, Guid xSymOrganizationId, int operationIndex = 0);
+        /// <summary>
+        /// List Account Summary
+        /// </summary>
+        /// <remarks>
+        /// Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </remarks>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AccountSummarySearchResultGuidPagedModel</returns>
+        AccountSummarySearchResultGuidPagedModel ListAccountSummary(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0);
+
+        /// <summary>
+        /// List Account Summary
+        /// </summary>
+        /// <remarks>
+        /// Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </remarks>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AccountSummarySearchResultGuidPagedModel</returns>
+        ApiResponse<AccountSummarySearchResultGuidPagedModel> ListAccountSummaryWithHttpInfo(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0);
         /// <summary>
         /// List Accounts
         /// </summary>
@@ -95,7 +134,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountSearchResultGuidPagedModel</returns>
-        AccountSearchResultGuidPagedModel ListAccounts(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0);
+        AccountSearchResultGuidPagedModel ListAccounts(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0);
 
         /// <summary>
         /// List Accounts
@@ -115,7 +154,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountSearchResultGuidPagedModel</returns>
-        ApiResponse<AccountSearchResultGuidPagedModel> ListAccountsWithHttpInfo(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0);
+        ApiResponse<AccountSearchResultGuidPagedModel> ListAccountsWithHttpInfo(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0);
         /// <summary>
         /// Update an Account
         /// </summary>
@@ -128,7 +167,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountResponseResultModel</returns>
-        AccountResponseResultModel UpdateAccount(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
+        AccountResponseResultModel UpdateAccount(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
 
         /// <summary>
         /// Update an Account
@@ -142,7 +181,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountResponseResultModel</returns>
-        ApiResponse<AccountResponseResultModel> UpdateAccountWithHttpInfo(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
+        ApiResponse<AccountResponseResultModel> UpdateAccountWithHttpInfo(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
         /// <summary>
         /// Update an Account synchronously
         /// </summary>
@@ -155,7 +194,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountResponseResultModel</returns>
-        AccountResponseResultModel UpdateAccountSync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
+        AccountResponseResultModel UpdateAccountSync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
 
         /// <summary>
         /// Update an Account synchronously
@@ -169,7 +208,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountResponseResultModel</returns>
-        ApiResponse<AccountResponseResultModel> UpdateAccountSyncWithHttpInfo(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
+        ApiResponse<AccountResponseResultModel> UpdateAccountSyncWithHttpInfo(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -191,7 +230,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountResponseResultModel</returns>
-        System.Threading.Tasks.Task<AccountResponseResultModel> CreateUpdateAccountAsync(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountResponseResultModel> CreateUpdateAccountAsync(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create/Update Accounts
@@ -205,7 +244,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountResponseResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountResponseResultModel>> CreateUpdateAccountWithHttpInfoAsync(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AccountResponseResultModel>> CreateUpdateAccountWithHttpInfoAsync(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get an Account by Id
         /// </summary>
@@ -218,7 +257,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountExtendedModelResultModel</returns>
-        System.Threading.Tasks.Task<AccountExtendedModelResultModel> GetAccountAsync(Guid id, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountExtendedModelResultModel> GetAccountAsync(Guid id, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get an Account by Id
@@ -232,7 +271,48 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountExtendedModelResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountExtendedModelResultModel>> GetAccountWithHttpInfoAsync(Guid id, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AccountExtendedModelResultModel>> GetAccountWithHttpInfoAsync(Guid id, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List Account Summary
+        /// </summary>
+        /// <remarks>
+        /// Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </remarks>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AccountSummarySearchResultGuidPagedModel</returns>
+        System.Threading.Tasks.Task<AccountSummarySearchResultGuidPagedModel> ListAccountSummaryAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List Account Summary
+        /// </summary>
+        /// <remarks>
+        /// Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </remarks>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AccountSummarySearchResultGuidPagedModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AccountSummarySearchResultGuidPagedModel>> ListAccountSummaryWithHttpInfoAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List Accounts
         /// </summary>
@@ -252,7 +332,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountSearchResultGuidPagedModel</returns>
-        System.Threading.Tasks.Task<AccountSearchResultGuidPagedModel> ListAccountsAsync(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountSearchResultGuidPagedModel> ListAccountsAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List Accounts
@@ -273,7 +353,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountSearchResultGuidPagedModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountSearchResultGuidPagedModel>> ListAccountsWithHttpInfoAsync(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AccountSearchResultGuidPagedModel>> ListAccountsWithHttpInfoAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update an Account
         /// </summary>
@@ -287,7 +367,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountResponseResultModel</returns>
-        System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update an Account
@@ -302,7 +382,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountResponseResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountResponseResultModel>> UpdateAccountWithHttpInfoAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AccountResponseResultModel>> UpdateAccountWithHttpInfoAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update an Account synchronously
         /// </summary>
@@ -316,7 +396,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountResponseResultModel</returns>
-        System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountSyncAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountSyncAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update an Account synchronously
@@ -331,7 +411,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountResponseResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountResponseResultModel>> UpdateAccountSyncWithHttpInfoAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AccountResponseResultModel>> UpdateAccountSyncWithHttpInfoAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -460,7 +540,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountResponseResultModel</returns>
-        public AccountResponseResultModel CreateUpdateAccount(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
+        public AccountResponseResultModel CreateUpdateAccount(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> localVarResponse = CreateUpdateAccountWithHttpInfo(xSymOrganizationId, accountForm);
             return localVarResponse.Data;
@@ -474,14 +554,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountResponseResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> CreateUpdateAccountWithHttpInfo(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> CreateUpdateAccountWithHttpInfo(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->CreateUpdateAccount");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -543,7 +617,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountResponseResultModel</returns>
-        public async System.Threading.Tasks.Task<AccountResponseResultModel> CreateUpdateAccountAsync(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AccountResponseResultModel> CreateUpdateAccountAsync(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> localVarResponse = await CreateUpdateAccountWithHttpInfoAsync(xSymOrganizationId, accountForm, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -558,14 +632,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountResponseResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel>> CreateUpdateAccountWithHttpInfoAsync(string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel>> CreateUpdateAccountWithHttpInfoAsync(Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->CreateUpdateAccount");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
@@ -628,7 +696,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountExtendedModelResultModel</returns>
-        public AccountExtendedModelResultModel GetAccount(Guid id, string xSymOrganizationId, int operationIndex = 0)
+        public AccountExtendedModelResultModel GetAccount(Guid id, Guid xSymOrganizationId, int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<AccountExtendedModelResultModel> localVarResponse = GetAccountWithHttpInfo(id, xSymOrganizationId);
             return localVarResponse.Data;
@@ -642,14 +710,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountExtendedModelResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<AccountExtendedModelResultModel> GetAccountWithHttpInfo(Guid id, string xSymOrganizationId, int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<AccountExtendedModelResultModel> GetAccountWithHttpInfo(Guid id, Guid xSymOrganizationId, int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->GetAccount");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -708,7 +770,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountExtendedModelResultModel</returns>
-        public async System.Threading.Tasks.Task<AccountExtendedModelResultModel> GetAccountAsync(Guid id, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AccountExtendedModelResultModel> GetAccountAsync(Guid id, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<AccountExtendedModelResultModel> localVarResponse = await GetAccountWithHttpInfoAsync(id, xSymOrganizationId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -723,14 +785,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountExtendedModelResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountExtendedModelResultModel>> GetAccountWithHttpInfoAsync(Guid id, string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountExtendedModelResultModel>> GetAccountWithHttpInfoAsync(Guid id, Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->GetAccount");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
@@ -783,6 +839,246 @@ namespace Symend.Client.Customer.Api
         }
 
         /// <summary>
+        /// List Account Summary Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </summary>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>AccountSummarySearchResultGuidPagedModel</returns>
+        public AccountSummarySearchResultGuidPagedModel ListAccountSummary(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0)
+        {
+            Symend.Client.Customer.Client.ApiResponse<AccountSummarySearchResultGuidPagedModel> localVarResponse = ListAccountSummaryWithHttpInfo(xSymOrganizationId, accountKey, email, phone, limit, direction, orderByAttribute, orderByLastValue, cursor);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Account Summary Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </summary>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of AccountSummarySearchResultGuidPagedModel</returns>
+        public Symend.Client.Customer.Client.ApiResponse<AccountSummarySearchResultGuidPagedModel> ListAccountSummaryWithHttpInfo(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0)
+        {
+            Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Symend.Client.Customer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Symend.Client.Customer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (accountKey != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "AccountKey", accountKey));
+            }
+            if (email != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Email", email));
+            }
+            if (phone != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Phone", phone));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Limit", limit));
+            }
+            if (direction != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Direction", direction));
+            }
+            if (orderByAttribute != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "OrderBy.Attribute", orderByAttribute));
+            }
+            if (orderByLastValue != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "OrderBy.LastValue", orderByLastValue));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Cursor", cursor));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Sym-OrganizationId", Symend.Client.Customer.Client.ClientUtils.ParameterToString(xSymOrganizationId)); // header parameter
+
+            localVarRequestOptions.Operation = "AccountsApi.ListAccountSummary";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (JSON_Web_Token) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<AccountSummarySearchResultGuidPagedModel>("/v1/accounts/actions/get-summary-list", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAccountSummary", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Account Summary Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </summary>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AccountSummarySearchResultGuidPagedModel</returns>
+        public async System.Threading.Tasks.Task<AccountSummarySearchResultGuidPagedModel> ListAccountSummaryAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Symend.Client.Customer.Client.ApiResponse<AccountSummarySearchResultGuidPagedModel> localVarResponse = await ListAccountSummaryWithHttpInfoAsync(xSymOrganizationId, accountKey, email, phone, limit, direction, orderByAttribute, orderByLastValue, cursor, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Account Summary Returns a paginated list of all accounts summary. Optionally, searches within that list.
+        /// </summary>
+        /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
+        /// <param name="accountKey">Return an account with a specific account key (optional)</param>
+        /// <param name="email">An email to search for within the accounts list (optional)</param>
+        /// <param name="phone">A phone number to search for within the accounts list (optional)</param>
+        /// <param name="limit">The maximum number of accounts to return per page, default 100. (optional)</param>
+        /// <param name="direction">The ordering direction of the results, ascending (default) or descending (optional)</param>
+        /// <param name="orderByAttribute">The account attribute to sort the results by (optional)</param>
+        /// <param name="orderByLastValue">Inherited, unused (optional)</param>
+        /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AccountSummarySearchResultGuidPagedModel)</returns>
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountSummarySearchResultGuidPagedModel>> ListAccountSummaryWithHttpInfoAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Symend.Client.Customer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Symend.Client.Customer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (accountKey != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "AccountKey", accountKey));
+            }
+            if (email != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Email", email));
+            }
+            if (phone != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Phone", phone));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Limit", limit));
+            }
+            if (direction != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Direction", direction));
+            }
+            if (orderByAttribute != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "OrderBy.Attribute", orderByAttribute));
+            }
+            if (orderByLastValue != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "OrderBy.LastValue", orderByLastValue));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Symend.Client.Customer.Client.ClientUtils.ParameterToMultiMap("", "Cursor", cursor));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Sym-OrganizationId", Symend.Client.Customer.Client.ClientUtils.ParameterToString(xSymOrganizationId)); // header parameter
+
+            localVarRequestOptions.Operation = "AccountsApi.ListAccountSummary";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (JSON_Web_Token) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<AccountSummarySearchResultGuidPagedModel>("/v1/accounts/actions/get-summary-list", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAccountSummary", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List Accounts Returns a paginated list of all accounts. Optionally, searches within that list.
         /// </summary>
         /// <exception cref="Symend.Client.Customer.Client.ApiException">Thrown when fails to make API call</exception>
@@ -797,7 +1093,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountSearchResultGuidPagedModel</returns>
-        public AccountSearchResultGuidPagedModel ListAccounts(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0)
+        public AccountSearchResultGuidPagedModel ListAccounts(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<AccountSearchResultGuidPagedModel> localVarResponse = ListAccountsWithHttpInfo(xSymOrganizationId, accountKey, email, phone, limit, direction, orderByAttribute, orderByLastValue, cursor);
             return localVarResponse.Data;
@@ -818,14 +1114,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="cursor">The ID of the last account on the previous page, leave empty to fetch first page (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountSearchResultGuidPagedModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<AccountSearchResultGuidPagedModel> ListAccountsWithHttpInfo(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<AccountSearchResultGuidPagedModel> ListAccountsWithHttpInfo(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->ListAccounts");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -922,7 +1212,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountSearchResultGuidPagedModel</returns>
-        public async System.Threading.Tasks.Task<AccountSearchResultGuidPagedModel> ListAccountsAsync(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AccountSearchResultGuidPagedModel> ListAccountsAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<AccountSearchResultGuidPagedModel> localVarResponse = await ListAccountsWithHttpInfoAsync(xSymOrganizationId, accountKey, email, phone, limit, direction, orderByAttribute, orderByLastValue, cursor, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -944,14 +1234,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountSearchResultGuidPagedModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountSearchResultGuidPagedModel>> ListAccountsWithHttpInfoAsync(string xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountSearchResultGuidPagedModel>> ListAccountsWithHttpInfoAsync(Guid xSymOrganizationId, string accountKey = default(string), string email = default(string), string phone = default(string), int? limit = default(int?), string direction = default(string), string orderByAttribute = default(string), string orderByLastValue = default(string), Guid? cursor = default(Guid?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->ListAccounts");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
@@ -1043,7 +1327,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountResponseResultModel</returns>
-        public AccountResponseResultModel UpdateAccount(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
+        public AccountResponseResultModel UpdateAccount(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> localVarResponse = UpdateAccountWithHttpInfo(id, xSymOrganizationId, accountForm);
             return localVarResponse.Data;
@@ -1058,14 +1342,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountResponseResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> UpdateAccountWithHttpInfo(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> UpdateAccountWithHttpInfo(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->UpdateAccount");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -1129,7 +1407,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountResponseResultModel</returns>
-        public async System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> localVarResponse = await UpdateAccountWithHttpInfoAsync(id, xSymOrganizationId, accountForm, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1145,14 +1423,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountResponseResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel>> UpdateAccountWithHttpInfoAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel>> UpdateAccountWithHttpInfoAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->UpdateAccount");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
@@ -1217,7 +1489,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountResponseResultModel</returns>
-        public AccountResponseResultModel UpdateAccountSync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
+        public AccountResponseResultModel UpdateAccountSync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> localVarResponse = UpdateAccountSyncWithHttpInfo(id, xSymOrganizationId, accountForm);
             return localVarResponse.Data;
@@ -1232,14 +1504,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="accountForm">Body contains list of properties which are key-value pairs. The keys are attribute IDs as seen in the data-target-defintions endpoint. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountResponseResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> UpdateAccountSyncWithHttpInfo(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> UpdateAccountSyncWithHttpInfo(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->UpdateAccountSync");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -1303,7 +1569,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountResponseResultModel</returns>
-        public async System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountSyncAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AccountResponseResultModel> UpdateAccountSyncAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel> localVarResponse = await UpdateAccountSyncWithHttpInfoAsync(id, xSymOrganizationId, accountForm, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1319,14 +1585,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountResponseResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel>> UpdateAccountSyncWithHttpInfoAsync(Guid id, string xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<AccountResponseResultModel>> UpdateAccountSyncWithHttpInfoAsync(Guid id, Guid xSymOrganizationId, AccountForm accountForm = default(AccountForm), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling AccountsApi->UpdateAccountSync");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 

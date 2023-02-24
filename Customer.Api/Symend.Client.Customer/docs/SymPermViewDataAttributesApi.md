@@ -1,6 +1,6 @@
 # Symend.Client.Customer.Api.SymPermViewDataAttributesApi
 
-All URIs are relative to *https://api-dev.symend.io/customer*
+All URIs are relative to *https://api.symend.io/customer*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -32,7 +32,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-dev.symend.io/customer";
+            config.BasePath = "https://api.symend.io/customer";
             // Configure Bearer token for authorization: JSON_Web_Token
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
@@ -127,7 +127,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-dev.symend.io/customer";
+            config.BasePath = "https://api.symend.io/customer";
             // Configure Bearer token for authorization: JSON_Web_Token
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
@@ -226,7 +226,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-dev.symend.io/customer";
+            config.BasePath = "https://api.symend.io/customer";
             // Configure Bearer token for authorization: JSON_Web_Token
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
@@ -326,7 +326,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://api-dev.symend.io/customer";
+            config.BasePath = "https://api.symend.io/customer";
             // Configure Bearer token for authorization: JSON_Web_Token
             config.AccessToken = "YOUR_BEARER_TOKEN";
 

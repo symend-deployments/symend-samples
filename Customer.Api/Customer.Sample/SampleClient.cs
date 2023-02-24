@@ -8,7 +8,7 @@ namespace Customer.Sample;
 
 public interface ISampleClient
 {
-    public Task Run(string organizationId);
+    public Task Run(Guid organizationId);
 }
 
 public class SampleClient : ISampleClient
@@ -20,7 +20,7 @@ public class SampleClient : ISampleClient
         _authenticationService = authenticationService;
     }
     
-    public async Task Run(string organizationId)
+    public async Task Run(Guid organizationId)
     {
         var dataTargetDefinitions = await GetDtds(organizationId);
         
@@ -28,17 +28,44 @@ public class SampleClient : ISampleClient
         
         // Creates a new Account, we expect an SMS message to be delivered for this user
         var createEvent = await CreateUpdateAccount(organizationId, newAccountForm);
-
+        
         //Load the created account
         var newAccount = await GetAccount(organizationId, createEvent.Data.Id);
         
         Log.Logger.Information("Created Account: {0}", newAccount.Data.ToJson());
         
-        //// To exit all accounts for the current Client uncomment
-        //await ExitAllAccounts(organizationId, dataTargetDefinitions);
+        // Load Customer Trail
+        var accounts = await GetAccounts(organizationId);
+        foreach (var account in accounts) 
+        {
+            Log.Logger.Information("Loading Cuss Trail for AccountId: {0}", account.Id);
+            var cussTrail = await GetCussTrail(account.Id, organizationId);
+            if (cussTrail.Data.Count>0)
+            {
+                Log.Logger.Information("Found Customer Trail Events for AccountId/AccountKey {0}/{1}\n{2}", 
+                    account.Id,
+                    account.AccountKey, 
+                    cussTrail.ToJson());
+            }
+        }
+        
+        // To exit all accounts for the current Client uncomment
+        // await ExitAllAccounts(organizationId, dataTargetDefinitions);
+    }
+    
+    private async Task<CustomerTrailEventPagedModel> GetCussTrail(Guid accountId, Guid organizationId)
+    {
+        var customerTrailApi = new CustomerTrailApi()
+        {
+            Configuration = Configuration.MergeConfigurations(GlobalConfiguration.Instance, 
+                new Configuration { AccessToken = _authenticationService.GetToken() }
+            )
+        };
+
+        return await customerTrailApi.GetCustomerTrailEventsForAccountAsync(accountId.ToString(), organizationId);
     }
 
-    private async Task ExitAllAccounts(string organizationId, Dictionary<string, DataTargetDefinitionDictionaryModel> dataTargetDefinitions)
+    private async Task ExitAllAccounts(Guid organizationId, Dictionary<string, DataTargetDefinitionDictionaryModel> dataTargetDefinitions)
     {
         var accounts = await GetAccounts(organizationId);
         foreach (var account in accounts) 
@@ -49,16 +76,16 @@ public class SampleClient : ISampleClient
         }
     }
 
-    private AccountForm ExitAccountForm(string accountKey, string organizationId, Dictionary<string, DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
+    private AccountForm ExitAccountForm(string accountKey, Guid organizationId, Dictionary<string, DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
     {
         var properties = new List<AccountFormAttributesInner>();
         properties.Add(new(AccountFormAssembler.AddProperty("AccountKey", accountKey, dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Exit_Reason", "PAID", dataTypeDefinitions)));
-        properties.Add(new(AccountFormAssembler.AddProperty("OrganizationIdCheck", organizationId, dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("OrganizationIdCheck", organizationId.ToString(), dataTypeDefinitions)));
         return new AccountForm { Attributes = properties }; 
     }
 
-    private AccountForm CreateNewAccountForm(string accountKey,string organizationId,Dictionary<string,DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
+    private AccountForm CreateNewAccountForm(string accountKey,Guid organizationId,Dictionary<string,DataTargetDefinitionDictionaryModel> dataTypeDefinitions)
     {
         var properties = new List<AccountFormAttributesInner>();
         
@@ -71,10 +98,10 @@ public class SampleClient : ISampleClient
         properties.Add(new(AccountFormAssembler.AddProperty("Last_Name", "Doe", dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Placement_Date", DateTime.Now, dataTypeDefinitions)));
         properties.Add(new(AccountFormAssembler.AddProperty("Episode_Date", DateTime.Now, dataTypeDefinitions)));
-        properties.Add(new(AccountFormAssembler.AddProperty("OrganizationIdCheck", organizationId, dataTypeDefinitions)));
+        properties.Add(new(AccountFormAssembler.AddProperty("OrganizationIdCheck", organizationId.ToString(), dataTypeDefinitions)));
         return new AccountForm { Attributes = properties }; 
     }
-    private async Task<AccountExtendedModelResultModel> GetAccount(string organizationId, Guid id)
+    private async Task<AccountExtendedModelResultModel> GetAccount(Guid organizationId, Guid id)
     {
         var accountsApi = new AccountsApi
         {
@@ -84,7 +111,7 @@ public class SampleClient : ISampleClient
         };
         return await accountsApi.GetAccountAsync(id, organizationId);
     }
-    private async Task<AccountResponseResultModel> CreateUpdateAccount(string organizationId, AccountForm accountForm)
+    private async Task<AccountResponseResultModel> CreateUpdateAccount(Guid organizationId, AccountForm accountForm)
     {
         var accountsApi = new AccountsApi
         {
@@ -94,7 +121,7 @@ public class SampleClient : ISampleClient
         };
         return await accountsApi.CreateUpdateAccountAsync(organizationId, accountForm);
     }
-    private async Task<List<AccountSearchResult>> GetAccounts(string organizationId)
+    private async Task<List<AccountSearchResult>> GetAccounts(Guid organizationId)
     {
         var accountsApi = new AccountsApi
         {
@@ -105,7 +132,7 @@ public class SampleClient : ISampleClient
         
         return (await accountsApi.ListAccountsAsync(organizationId)).Data;
     }
-    private async Task<Dictionary<string, DataTargetDefinitionDictionaryModel>> GetDtds(string organizationId)
+    private async Task<Dictionary<string, DataTargetDefinitionDictionaryModel>> GetDtds(Guid organizationId)
     {
         var dtdApi = new DataTargetDefinitionsApi()
         {

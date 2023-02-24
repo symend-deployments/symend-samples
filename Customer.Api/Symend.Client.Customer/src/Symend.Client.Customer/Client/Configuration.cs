@@ -120,7 +120,19 @@ namespace Symend.Client.Customer.Client
                 {
                     new Dictionary<string, object> {
                         {"url", "https://api.symend.io/customer"},
-                        {"description", "Symend Customer"},
+                        {"description", "prod"},
+                    }
+                },
+                {
+                    new Dictionary<string, object> {
+                        {"url", "https://api-dev.symend.io/customer"},
+                        {"description", "development"},
+                    }
+                },
+                {
+                    new Dictionary<string, object> {
+                        {"url", "https://api-test.symend.io/customer"},
+                        {"description", "test"},
                     }
                 }
             };

@@ -37,7 +37,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>StringIEnumerableResultModel</returns>
-        StringIEnumerableResultModel GetDataCategories(string xSymOrganizationId, int operationIndex = 0);
+        StringIEnumerableResultModel GetDataCategories(Guid xSymOrganizationId, int operationIndex = 0);
 
         /// <summary>
         /// List Data Categories
@@ -49,7 +49,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of StringIEnumerableResultModel</returns>
-        ApiResponse<StringIEnumerableResultModel> GetDataCategoriesWithHttpInfo(string xSymOrganizationId, int operationIndex = 0);
+        ApiResponse<StringIEnumerableResultModel> GetDataCategoriesWithHttpInfo(Guid xSymOrganizationId, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -70,7 +70,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StringIEnumerableResultModel</returns>
-        System.Threading.Tasks.Task<StringIEnumerableResultModel> GetDataCategoriesAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StringIEnumerableResultModel> GetDataCategoriesAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List Data Categories
@@ -83,7 +83,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StringIEnumerableResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StringIEnumerableResultModel>> GetDataCategoriesWithHttpInfoAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StringIEnumerableResultModel>> GetDataCategoriesWithHttpInfoAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -211,7 +211,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>StringIEnumerableResultModel</returns>
-        public StringIEnumerableResultModel GetDataCategories(string xSymOrganizationId, int operationIndex = 0)
+        public StringIEnumerableResultModel GetDataCategories(Guid xSymOrganizationId, int operationIndex = 0)
         {
             Symend.Client.Customer.Client.ApiResponse<StringIEnumerableResultModel> localVarResponse = GetDataCategoriesWithHttpInfo(xSymOrganizationId);
             return localVarResponse.Data;
@@ -224,14 +224,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="xSymOrganizationId">Organization UUID of the client making the request</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of StringIEnumerableResultModel</returns>
-        public Symend.Client.Customer.Client.ApiResponse<StringIEnumerableResultModel> GetDataCategoriesWithHttpInfo(string xSymOrganizationId, int operationIndex = 0)
+        public Symend.Client.Customer.Client.ApiResponse<StringIEnumerableResultModel> GetDataCategoriesWithHttpInfo(Guid xSymOrganizationId, int operationIndex = 0)
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataCategoriesApi->GetDataCategories");
-            }
-
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -288,7 +282,7 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StringIEnumerableResultModel</returns>
-        public async System.Threading.Tasks.Task<StringIEnumerableResultModel> GetDataCategoriesAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StringIEnumerableResultModel> GetDataCategoriesAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Symend.Client.Customer.Client.ApiResponse<StringIEnumerableResultModel> localVarResponse = await GetDataCategoriesWithHttpInfoAsync(xSymOrganizationId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -302,14 +296,8 @@ namespace Symend.Client.Customer.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StringIEnumerableResultModel)</returns>
-        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<StringIEnumerableResultModel>> GetDataCategoriesWithHttpInfoAsync(string xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Symend.Client.Customer.Client.ApiResponse<StringIEnumerableResultModel>> GetDataCategoriesWithHttpInfoAsync(Guid xSymOrganizationId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'xSymOrganizationId' is set
-            if (xSymOrganizationId == null)
-            {
-                throw new Symend.Client.Customer.Client.ApiException(400, "Missing required parameter 'xSymOrganizationId' when calling DataCategoriesApi->GetDataCategories");
-            }
-
 
             Symend.Client.Customer.Client.RequestOptions localVarRequestOptions = new Symend.Client.Customer.Client.RequestOptions();
 

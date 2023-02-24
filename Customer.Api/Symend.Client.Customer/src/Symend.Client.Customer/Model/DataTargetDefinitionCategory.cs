@@ -69,10 +69,10 @@ namespace Symend.Client.Customer.Model
         Account = 6,
 
         /// <summary>
-        /// Enum Uncategorized for value: uncategorized
+        /// Enum Uncategrorized for value: uncategrorized
         /// </summary>
-        [EnumMember(Value = "uncategorized")]
-        Uncategorized = 7,
+        [EnumMember(Value = "uncategrorized")]
+        Uncategrorized = 7,
 
         /// <summary>
         /// Enum Property for value: property

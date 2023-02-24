@@ -33,7 +33,7 @@ public class Program
             var app = serviceProvider.GetRequiredService<ISampleClient>();
             
             //Start integration function here, supplying the OrganizationId for target Org 
-            await app.Run("OrganizationId GUID here");
+            await app.Run(Guid.Parse("Your-OrganizationId-Here"));
 
             Log.Information("Shutting down...");
         }
