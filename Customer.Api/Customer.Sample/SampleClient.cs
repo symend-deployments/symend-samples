@@ -39,7 +39,7 @@ public class SampleClient : ISampleClient
         foreach (var account in accounts) 
         {
             Log.Logger.Information("Loading Cuss Trail for AccountId: {0}", account.Id);
-            var cussTrail = await GetCussTrail(account.Id, organizationId);
+            var cussTrail = await GetCussTrailByAccountKey(account.AccountKey, organizationId);
             if (cussTrail.Data.Count>0)
             {
                 Log.Logger.Information("Found Customer Trail Events for AccountId/AccountKey {0}/{1}\n{2}", 
@@ -53,7 +53,7 @@ public class SampleClient : ISampleClient
         // await ExitAllAccounts(organizationId, dataTargetDefinitions);
     }
     
-    private async Task<CustomerTrailEventPagedModel> GetCussTrail(Guid accountId, Guid organizationId)
+    private async Task<CustomerTrailEventPagedModel> GetCussTrailByAccountId(Guid accountId, Guid organizationId)
     {
         var customerTrailApi = new CustomerTrailApi()
         {
@@ -62,7 +62,20 @@ public class SampleClient : ISampleClient
             )
         };
 
+        
         return await customerTrailApi.GetCustomerTrailEventsForAccountAsync(accountId.ToString(), organizationId);
+    }
+
+      private async Task<CustomerTrailEventPagedModel> GetCussTrailByAccountKey(string accountKey, Guid organizationId)
+    {
+        var customerTrailApi = new CustomerTrailApi()
+        {
+            Configuration = Configuration.MergeConfigurations(GlobalConfiguration.Instance, 
+                new Configuration { AccessToken = _authenticationService.GetToken() }
+            )
+        };
+        
+        return await customerTrailApi.GetCustomerEventsByAccountKeyAsync(organizationId, accountKey);
     }
 
     private async Task ExitAllAccounts(Guid organizationId, Dictionary<string, DataTargetDefinitionDictionaryModel> dataTargetDefinitions)
