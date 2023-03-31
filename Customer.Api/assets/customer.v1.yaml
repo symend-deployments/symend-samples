@@ -2247,7 +2247,7 @@ components:
         - contact
         - billing
         - account
-        - uncategrorized
+        - uncategorized
         - property
       type: string
     DataTargetDefinitionDataType:
