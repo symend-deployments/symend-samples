@@ -42,44 +42,49 @@ namespace Symend.Client.Customer.Model
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 1,
+            Unknown,
 
             /// <summary>
             /// Enum String for value: string
             /// </summary>
             [EnumMember(Value = "string")]
-            String = 2,
+            String,
 
             /// <summary>
             /// Enum Integer for value: integer
             /// </summary>
             [EnumMember(Value = "integer")]
-            Integer = 3,
+            Integer,
 
             /// <summary>
             /// Enum Boolean for value: boolean
             /// </summary>
             [EnumMember(Value = "boolean")]
-            Boolean = 4,
+            Boolean,
 
             /// <summary>
             /// Enum Datetime for value: datetime
             /// </summary>
             [EnumMember(Value = "datetime")]
-            Datetime = 5,
+            Datetime,
 
             /// <summary>
             /// Enum Number for value: number
             /// </summary>
             [EnumMember(Value = "number")]
-            Number = 6,
+            Number,
 
             /// <summary>
             /// Enum Guid for value: guid
             /// </summary>
             [EnumMember(Value = "guid")]
-            Guid = 7
+            Guid,
 
+            /// <summary>
+            /// Enum DateOnly for value: dateOnly
+            /// </summary>
+            [EnumMember(Value = "dateOnly")]
+            DateOnly
         }
 
 
@@ -135,7 +140,6 @@ namespace Symend.Client.Customer.Model
             /// </summary>
             [EnumMember(Value = "property")]
             Property = 7
-
         }
 
 
@@ -161,7 +165,6 @@ namespace Symend.Client.Customer.Model
             /// </summary>
             [EnumMember(Value = "collection")]
             Collection = 2
-
         }
 
 
@@ -315,7 +318,7 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

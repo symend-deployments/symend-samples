@@ -6,7 +6,7 @@ All URIs are relative to *https://api.symend.io/customer*
 |--------|--------------|-------------|
 | [**GetDataCategories**](DataCategoriesApi.md#getdatacategories) | **GET** /v1/data-categories | List Data Categories |
 
-<a name="getdatacategories"></a>
+<a id="getdatacategories"></a>
 # **GetDataCategories**
 > StringIEnumerableResultModel GetDataCategories (Guid xSymOrganizationId)
 

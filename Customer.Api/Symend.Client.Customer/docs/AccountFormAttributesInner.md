@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Value** | **List&lt;bool&gt;** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **AttributeType** | **string** |  | [optional] 
 

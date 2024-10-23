@@ -9,7 +9,7 @@ All URIs are relative to *https://api.symend.io/customer*
 | [**GetDataTargetDefinitions**](DataTargetDefinitionsApi.md#getdatatargetdefinitions) | **GET** /v1/data-target-definitions | List of Data Target Definitions |
 | [**GetDataTargetDefinitionsDictionary**](DataTargetDefinitionsApi.md#getdatatargetdefinitionsdictionary) | **GET** /v1/data-target-definitions/dictionary | List of Data Target Definitions (dictionary) |
 
-<a name="createdatatargetdefinition"></a>
+<a id="createdatatargetdefinition"></a>
 # **CreateDataTargetDefinition**
 > DataTargetDefinitionModelResultModel CreateDataTargetDefinition (Guid xSymOrganizationId, DataTargetDefinitionForm dataTargetDefinitionForm = null)
 
@@ -109,7 +109,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getdatatargetdefinition"></a>
+<a id="getdatatargetdefinition"></a>
 # **GetDataTargetDefinition**
 > DataTargetDefinitionModelResultModel GetDataTargetDefinition (Guid dataTargetDefinitionId, Guid xSymOrganizationId)
 
@@ -208,7 +208,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getdatatargetdefinitions"></a>
+<a id="getdatatargetdefinitions"></a>
 # **GetDataTargetDefinitions**
 > DataTargetDefinitionSearchResultGuidPagedModel GetDataTargetDefinitions (Guid xSymOrganizationId, GetDataTargetDefinitionsDataTargetDefinitionSearchCriteriaParameter dataTargetDefinitionSearchCriteria = null, GuidPagedMetadata paging = null)
 
@@ -308,7 +308,7 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="getdatatargetdefinitionsdictionary"></a>
+<a id="getdatatargetdefinitionsdictionary"></a>
 # **GetDataTargetDefinitionsDictionary**
 > GuidDataTargetDefinitionDictionaryModelIDictionaryResultModel GetDataTargetDefinitionsDictionary (Guid xSymOrganizationId)
 

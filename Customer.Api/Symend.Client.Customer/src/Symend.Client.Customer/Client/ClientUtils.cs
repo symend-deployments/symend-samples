@@ -11,6 +11,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -102,8 +103,12 @@ namespace Symend.Client.Customer.Client
                 return dateTimeOffset.ToString((configuration ?? GlobalConfiguration.Instance).DateTimeFormat);
             if (obj is bool boolean)
                 return boolean ? "true" : "false";
-            if (obj is ICollection collection)
-                return string.Join(",", collection.Cast<object>());
+            if (obj is ICollection collection) {
+                List<string> entries = new List<string>();
+                foreach (var entry in collection)
+                    entries.Add(ParameterToString(entry, configuration));
+                return string.Join(",", entries);
+            }
             if (obj is Enum && HasEnumMemberAttrValue(obj))
                 return GetEnumMemberAttrValue(obj);
 
@@ -127,7 +132,7 @@ namespace Symend.Client.Customer.Client
         /// <returns>Encoded string.</returns>
         public static string Base64Encode(string text)
         {
-            return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(text));
+            return Convert.ToBase64String(global::System.Text.Encoding.UTF8.GetBytes(text));
         }
 
         /// <summary>

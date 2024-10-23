@@ -19,6 +19,7 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Net.Http;
+using System.Net.Security;
 
 namespace Symend.Client.Customer.Client
 {
@@ -58,6 +59,11 @@ namespace Symend.Client.Customer.Client
                     string.Format("Error calling {0}: {1}", methodName, response.RawContent),
                     response.RawContent, response.Headers);
             }
+            if (status == 0)
+            {
+                return new ApiException(status,
+                    string.Format("Error calling {0}: {1}", methodName, response.ErrorText), response.ErrorText);
+            }
             return null;
         };
 
@@ -70,6 +76,8 @@ namespace Symend.Client.Customer.Client
         /// Example: http://localhost:3000/v1/
         /// </summary>
         private string _basePath;
+
+        private bool _useDefaultCredentials = false;
 
         /// <summary>
         /// Gets or sets the API key based on the authentication name.
@@ -106,7 +114,7 @@ namespace Symend.Client.Customer.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
             Proxy = null;
@@ -120,19 +128,7 @@ namespace Symend.Client.Customer.Client
                 {
                     new Dictionary<string, object> {
                         {"url", "https://api.symend.io/customer"},
-                        {"description", "prod"},
-                    }
-                },
-                {
-                    new Dictionary<string, object> {
-                        {"url", "https://api-dev.symend.io/customer"},
-                        {"description", "development"},
-                    }
-                },
-                {
-                    new Dictionary<string, object> {
-                        {"url", "https://api-test.symend.io/customer"},
-                        {"description", "test"},
+                        {"description", "Symend Customer"},
                     }
                 }
             };
@@ -147,7 +143,7 @@ namespace Symend.Client.Customer.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration(
             IDictionary<string, string> defaultHeaders,
             IDictionary<string, string> apiKey,
@@ -188,9 +184,19 @@ namespace Symend.Client.Customer.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath {
+        public virtual string BasePath 
+        {
             get { return _basePath; }
             set { _basePath = value; }
+        }
+
+        /// <summary>
+        /// Determine whether or not the "default credentials" (e.g. the user account under which the current process is running) will be sent along to the server. The default is false.
+        /// </summary>
+        public virtual bool UseDefaultCredentials
+        {
+            get { return _useDefaultCredentials; }
+            set { _useDefaultCredentials = value; }
         }
 
         /// <summary>
@@ -457,7 +463,7 @@ namespace Symend.Client.Customer.Client
         /// <return>The operation server URL.</return>
         public string GetOperationServerUrl(string operation, int index, Dictionary<string, string> inputVariables)
         {
-            if (OperationServers.TryGetValue(operation, out var operationServer))
+            if (operation != null && OperationServers.TryGetValue(operation, out var operationServer))
             {
                 return GetServerUrl(operationServer, index, inputVariables);
             }
@@ -516,6 +522,11 @@ namespace Symend.Client.Customer.Client
 
             return url;
         }
+        
+        /// <summary>
+        /// Gets and Sets the RemoteCertificateValidationCallback
+        /// </summary>
+        public RemoteCertificateValidationCallback RemoteCertificateValidationCallback { get; set; }
 
         #endregion Properties
 
@@ -592,6 +603,8 @@ namespace Symend.Client.Customer.Client
                 TempFolderPath = second.TempFolderPath ?? first.TempFolderPath,
                 DateTimeFormat = second.DateTimeFormat ?? first.DateTimeFormat,
                 ClientCertificates = second.ClientCertificates ?? first.ClientCertificates,
+                UseDefaultCredentials = second.UseDefaultCredentials,
+                RemoteCertificateValidationCallback = second.RemoteCertificateValidationCallback ?? first.RemoteCertificateValidationCallback,
             };
             return config;
         }

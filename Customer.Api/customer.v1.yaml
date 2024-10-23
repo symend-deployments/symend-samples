@@ -456,6 +456,60 @@ paths:
         in: path
         required: true
         description: The GUID associated with the desired account
+  /v1/accounts/actions/get-summary-list:
+    get:
+      tags:
+        - Accounts
+      operationId: ListAccountSummary
+      parameters:
+        - $ref: '#/components/parameters/ListAccountSummarySearchCriteria'
+        - $ref: '#/components/parameters/CursorPagingCriteria'
+        - $ref: '#/components/parameters/X-Sym-OrganizationId'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountSummarySearchResultGuidPagedModel'
+              examples:
+                Example 1:
+                  value:
+                    data:
+                      - createdBy:
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        createdAt: '2019-08-24T14:15:22Z'
+                        updatedBy:
+                          id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        updatedAt: '2019-08-24T14:15:22Z'
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        accountKey: BAN123456
+                        email: nav@gmail.com
+                        phone: '4034445555'
+                    meta:
+                      limit: 25
+                      total: 20
+                      after: efd4e8c3-8b3e-498a-b8e8-27d7cafac8b8
+                      before: d13be7c7-f53a-4be1-8a19-08d1df245865
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Common_ErrorModel'
+      description: 'Returns a paginated list of all accounts summary. Optionally, searches within that list.'
+      summary: List Account Summary
+    parameters: []
   /v1/data-categories:
     get:
       operationId: GetDataCategories
@@ -965,6 +1019,49 @@ components:
         locale:
           type: string
           nullable: true
+    AccountSummarySearchResultGuidPagedModel:
+      type: object
+      additionalProperties: false
+      x-stoplight:
+        id: 5d97fbe4d3304
+      properties:
+        data:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/AccountSummarySearchResult'
+          readOnly: true
+        meta:
+          $ref: '#/components/schemas/PagedMetadata'
+    AccountSummarySearchResult:
+      type: object
+      additionalProperties: false
+      x-stoplight:
+        id: 8400f8056540e
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/UserModel'
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          $ref: '#/components/schemas/UserModel'
+        updatedAt:
+          type: string
+          format: date-time
+          nullable: true
+        id:
+          type: string
+          format: uuid
+        accountKey:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
     SegmentGuidPagedModel:
       type: object
       properties:
@@ -987,6 +1084,8 @@ components:
         - account
         - uncategorized
         - property
+        - insightEnablement
+        - cureScoresArchetypes
       type: string
     DataTargetDefinitionDataType:
       enum:
@@ -997,6 +1096,7 @@ components:
         - dateTime
         - number
         - guid
+        - dateOnly
       type: string
     DataTargetDefinitionDictionaryModel:
       type: object
@@ -1087,6 +1187,7 @@ components:
             - datetime
             - number
             - guid
+            - dateOnly
         isPii:
           type: boolean
         category:
@@ -1170,6 +1271,51 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/DataTargetDefinitionModel'
+      additionalProperties: false
+    CursorPagingCriteria:
+      type: object
+      properties:
+        limit:
+          type: integer
+          maximum: 1000
+          minimum: 0
+          default: 25
+          description: The max amount of records to get per-page.
+        after:
+          type: string
+          format: uuid
+          nullable: true
+          description: The cursor value used for getting the next page of records. Can not be used at the same time as `before`.
+        before:
+          type: string
+          format: uuid
+          nullable: true
+          description: The cursor value used for getting the previous page of records. Can not be used at the same time as `after`.
+        sort:
+          type: string
+          nullable: false
+          description: The property name to sort the records by. Prefixed with `-` to sort by descending.
+          default: -updatedAt
+        count:
+          type: boolean
+          description: An optional parameter that will return the total count of records when `true`.
+          default: false
+      additionalProperties: false
+    AccountSummarySearchCriteria:
+      type: object
+      properties:
+        email:
+          type: string
+          nullable: true
+        accountKey:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        accountId:
+          type: string
+          nullable: true
       additionalProperties: false
     GuidPagedMetadata:
       type: object
@@ -1680,6 +1826,38 @@ components:
           $ref: '#/components/schemas/SegmentRevisionSummaryModel'
         status:
           $ref: '#/components/schemas/PublishState'
+    PagedMetadata:
+      title: PagedMetadata
+      type: object
+      required:
+        - after
+        - before
+        - limit
+        - total
+      properties:
+        limit:
+          type: integer
+          description: The maximum amount of records for a page.
+        cursor:
+          type: string
+          deprecated: true
+        after:
+          type: string
+          nullable: true
+          description: The cursor value used for getting the next page of records. Null if there is no next page.
+        before:
+          type: string
+          nullable: true
+          description: The cursor value used for getting the previous page of records. Null if there is no previous page.
+        total:
+          type: integer
+          nullable: true
+          description: The total amount of records in a data set. Null if total count was not requested.
+      example:
+        after: 2791a284-30e5-4814-be02-a25532630ae6
+        before: 6581a284-30e5-4814-be02-a25532630jb9
+        total: 120
+        limit: 25
     Common_ErrorDetail:
       title: ErrorDetail
       type: object
@@ -1762,6 +1940,12 @@ components:
         rel: self
         method: GET
   parameters:
+    ListAccountSummarySearchCriteria:
+      name: search
+      description: Search Account Summary Parameter
+      in: query
+      schema:
+        $ref: '#/components/schemas/AccountSummarySearchCriteria'
     DataTargetDefinitionSearchCriteria:
       name: DataTargetDefinitionSearchCriteria
       description: Data Target Definition Search Criteria
@@ -1779,6 +1963,12 @@ components:
           isUniqueId:
             type: boolean
             nullable: true
+    CursorPagingCriteria:
+        name: paging
+        description: Cursor paging Criteria
+        in: query
+        schema:
+          $ref: '#/components/schemas/CursorPagingCriteria'
     PagingCriteria:
       name: paging
       description: Paging Criteria
@@ -1792,7 +1982,7 @@ components:
       required: true
       schema:
         type: string
-        format: string
+        format: uuid
         example: 51840c3a-4bb9-4b4a-b8d9-0ca1f93a76a7
   securitySchemes:
     JSON_Web_Token:

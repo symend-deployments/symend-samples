@@ -72,11 +72,11 @@ namespace Symend.Client.Customer.Model
             }
             set
             {
-                if (value.GetType() == typeof(Rule))
+                if (value.GetType() == typeof(Rule) || value is Rule)
                 {
                     this._actualInstance = value;
                 }
-                else if (value.GetType() == typeof(RuleGroup))
+                else if (value.GetType() == typeof(RuleGroup) || value is RuleGroup)
                 {
                     this._actualInstance = value;
                 }
@@ -191,7 +191,7 @@ namespace Symend.Client.Customer.Model
             }
             else if (match > 1)
             {
-                throw new InvalidDataException("The JSON string `" + jsonString + "` incorrectly matches more than one schema (should be exactly one match): " + matchedTypes);
+                throw new InvalidDataException("The JSON string `" + jsonString + "` incorrectly matches more than one schema (should be exactly one match): " + String.Join(",", matchedTypes));
             }
 
             // deserialization is considered successful at this point if no exception has been thrown.
@@ -273,11 +273,15 @@ namespace Symend.Client.Customer.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            switch(reader.TokenType) 
             {
-                return SegmentRevisionModelRules.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartObject:
+                    return SegmentRevisionModelRules.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartArray:
+                    return SegmentRevisionModelRules.FromJson(JArray.Load(reader).ToString(Formatting.None));
+                default:
+                    return null;
             }
-            return null;
         }
 
         /// <summary>

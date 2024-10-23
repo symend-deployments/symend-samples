@@ -43,7 +43,6 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         [EnumMember(Value = "collection")]
         Collection = 2
-
     }
 
 }
