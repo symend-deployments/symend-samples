@@ -36,7 +36,7 @@ namespace Symend.Client.Customer.Model
         /// Initializes a new instance of the <see cref="AccountSummarySearchResultGuidPagedModel" /> class.
         /// </summary>
         /// <param name="meta">meta.</param>
-        public AccountSummarySearchResultGuidPagedModel(GuidPagedMetadata meta = default(GuidPagedMetadata))
+        public AccountSummarySearchResultGuidPagedModel(PagedMetadata meta = default(PagedMetadata))
         {
             this.Meta = meta;
         }
@@ -59,7 +59,7 @@ namespace Symend.Client.Customer.Model
         /// Gets or Sets Meta
         /// </summary>
         [DataMember(Name = "meta", EmitDefaultValue = false)]
-        public GuidPagedMetadata Meta { get; set; }
+        public PagedMetadata Meta { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -145,7 +145,7 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

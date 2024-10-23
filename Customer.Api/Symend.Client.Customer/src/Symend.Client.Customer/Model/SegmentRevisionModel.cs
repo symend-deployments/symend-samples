@@ -42,8 +42,8 @@ namespace Symend.Client.Customer.Model
         /// <param name="id">id.</param>
         /// <param name="rules">rules.</param>
         /// <param name="segment">segment.</param>
-        /// <param name="version">version.</param>
-        public SegmentRevisionModel(UserModel createdBy = default(UserModel), DateTime createdAt = default(DateTime), UserModel updatedBy = default(UserModel), DateTime? updatedAt = default(DateTime?), Guid id = default(Guid), SegmentRevisionModelRules rules = default(SegmentRevisionModelRules), SegmentSummaryModel segment = default(SegmentSummaryModel), int version = default(int))
+        /// <param name="varVersion">varVersion.</param>
+        public SegmentRevisionModel(UserModel createdBy = default(UserModel), DateTime createdAt = default(DateTime), UserModel updatedBy = default(UserModel), DateTime? updatedAt = default(DateTime?), Guid id = default(Guid), SegmentRevisionModelRules rules = default(SegmentRevisionModelRules), SegmentSummaryModel segment = default(SegmentSummaryModel), int varVersion = default(int))
         {
             this.CreatedBy = createdBy;
             this.CreatedAt = createdAt;
@@ -52,7 +52,7 @@ namespace Symend.Client.Customer.Model
             this.Id = id;
             this.Rules = rules;
             this.Segment = segment;
-            this._Version = version;
+            this._Version = varVersion;
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

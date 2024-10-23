@@ -43,7 +43,6 @@ namespace Symend.Client.Customer.Model
             /// </summary>
             [EnumMember(Value = "Definition")]
             Definition = 1
-
         }
 
 
@@ -62,128 +61,127 @@ namespace Symend.Client.Customer.Model
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 1,
+            Unknown,
 
             /// <summary>
             /// Enum Is for value: is
             /// </summary>
             [EnumMember(Value = "is")]
-            Is = 2,
+            Is,
 
             /// <summary>
             /// Enum IsNot for value: isNot
             /// </summary>
             [EnumMember(Value = "isNot")]
-            IsNot = 3,
+            IsNot,
 
             /// <summary>
             /// Enum LessThan for value: lessThan
             /// </summary>
             [EnumMember(Value = "lessThan")]
-            LessThan = 4,
+            LessThan,
 
             /// <summary>
             /// Enum LessThanOrEqual for value: lessThanOrEqual
             /// </summary>
             [EnumMember(Value = "lessThanOrEqual")]
-            LessThanOrEqual = 5,
+            LessThanOrEqual,
 
             /// <summary>
             /// Enum GreaterThan for value: greaterThan
             /// </summary>
             [EnumMember(Value = "greaterThan")]
-            GreaterThan = 6,
+            GreaterThan,
 
             /// <summary>
             /// Enum GreaterThanOrEqual for value: greaterThanOrEqual
             /// </summary>
             [EnumMember(Value = "greaterThanOrEqual")]
-            GreaterThanOrEqual = 7,
+            GreaterThanOrEqual,
 
             /// <summary>
             /// Enum Contains for value: contains
             /// </summary>
             [EnumMember(Value = "contains")]
-            Contains = 8,
+            Contains,
 
             /// <summary>
             /// Enum DoesNotContain for value: doesNotContain
             /// </summary>
             [EnumMember(Value = "doesNotContain")]
-            DoesNotContain = 9,
+            DoesNotContain,
 
             /// <summary>
             /// Enum IsEmpty for value: isEmpty
             /// </summary>
             [EnumMember(Value = "isEmpty")]
-            IsEmpty = 10,
+            IsEmpty,
 
             /// <summary>
             /// Enum IsNotEmpty for value: isNotEmpty
             /// </summary>
             [EnumMember(Value = "isNotEmpty")]
-            IsNotEmpty = 11,
+            IsNotEmpty,
 
             /// <summary>
             /// Enum IsToday for value: isToday
             /// </summary>
             [EnumMember(Value = "isToday")]
-            IsToday = 12,
+            IsToday,
 
             /// <summary>
             /// Enum IsNotToday for value: isNotToday
             /// </summary>
             [EnumMember(Value = "isNotToday")]
-            IsNotToday = 13,
+            IsNotToday,
 
             /// <summary>
             /// Enum IsBeforeToday for value: isBeforeToday
             /// </summary>
             [EnumMember(Value = "isBeforeToday")]
-            IsBeforeToday = 14,
+            IsBeforeToday,
 
             /// <summary>
             /// Enum IsAfterToday for value: isAfterToday
             /// </summary>
             [EnumMember(Value = "isAfterToday")]
-            IsAfterToday = 15,
+            IsAfterToday,
 
             /// <summary>
             /// Enum IsOneOf for value: isOneOf
             /// </summary>
             [EnumMember(Value = "isOneOf")]
-            IsOneOf = 16,
+            IsOneOf,
 
             /// <summary>
             /// Enum IsNotOneOf for value: isNotOneOf
             /// </summary>
             [EnumMember(Value = "isNotOneOf")]
-            IsNotOneOf = 17,
+            IsNotOneOf,
 
             /// <summary>
             /// Enum WasInTheLast for value: wasInTheLast
             /// </summary>
             [EnumMember(Value = "wasInTheLast")]
-            WasInTheLast = 18,
+            WasInTheLast,
 
             /// <summary>
             /// Enum WasNotInTheLast for value: wasNotInTheLast
             /// </summary>
             [EnumMember(Value = "wasNotInTheLast")]
-            WasNotInTheLast = 19,
+            WasNotInTheLast,
 
             /// <summary>
             /// Enum IsInTheNext for value: isInTheNext
             /// </summary>
             [EnumMember(Value = "isInTheNext")]
-            IsInTheNext = 20,
+            IsInTheNext,
 
             /// <summary>
             /// Enum IsNotInTheNext for value: isNotInTheNext
             /// </summary>
             [EnumMember(Value = "isNotInTheNext")]
-            IsNotInTheNext = 21
-
+            IsNotInTheNext
         }
 
 
@@ -202,20 +200,19 @@ namespace Symend.Client.Customer.Model
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 1,
+            Unknown,
 
             /// <summary>
             /// Enum Input for value: input
             /// </summary>
             [EnumMember(Value = "input")]
-            Input = 2,
+            Input,
 
             /// <summary>
             /// Enum Attribute for value: attribute
             /// </summary>
             [EnumMember(Value = "attribute")]
-            Attribute = 3
-
+            Attribute
         }
 
 
@@ -229,14 +226,14 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="type">type (default to TypeEnum.Definition).</param>
         /// <param name="field">field.</param>
-        /// <param name="_operator">_operator.</param>
+        /// <param name="varOperator">varOperator.</param>
         /// <param name="value">Value to check against the operation. Value is now expected to be of the Native Type of the Data Target Definition.  i.e. If your Data Target Definition is a Number A value of: 10 will pass. While a value of \&quot;10\&quot; will fail on publish due to the value not matching the correct data type.  Possible Special Key Values for Specific Data Target Definition Data Type: - Datetime   - {{TODAY}} - This should be evaluated as the today date on evaluation of the rule during RUN TIME (NOT on publish during DESIGN TIME)    Values for Specific Data Target Definition Data Types - Datetime   - isBeforeToday - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.   - isAfterToday - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.   - wasInTheLast - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.   - wasNotInTheLast - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.   - isInTheNext - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed.   - isNotInTheNext - Value must be in ISO8601 Duration Format. The value should be limited to Days, Weeks and Months even though the format allows hours/minutes/seconds and years. Combination of units are not allowed..</param>
         /// <param name="valueType">valueType.</param>
-        public Rule(TypeEnum? type = TypeEnum.Definition, Guid field = default(Guid), OperatorEnum? _operator = default(OperatorEnum?), Object value = default(Object), ValueTypeEnum? valueType = default(ValueTypeEnum?))
+        public Rule(TypeEnum? type = TypeEnum.Definition, Guid field = default(Guid), OperatorEnum? varOperator = default(OperatorEnum?), Object value = default(Object), ValueTypeEnum? valueType = default(ValueTypeEnum?))
         {
             this.Type = type;
             this.Field = field;
-            this.Operator = _operator;
+            this.Operator = varOperator;
             this.Value = value;
             this.ValueType = valueType;
         }
@@ -355,7 +352,7 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

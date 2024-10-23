@@ -37,12 +37,12 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        /// <param name="version">version.</param>
-        public SegmentRevisionSummaryModel(Guid id = default(Guid), DateTime? updatedAt = default(DateTime?), int version = default(int))
+        /// <param name="varVersion">varVersion.</param>
+        public SegmentRevisionSummaryModel(Guid id = default(Guid), DateTime? updatedAt = default(DateTime?), int varVersion = default(int))
         {
             this.Id = id;
             this.UpdatedAt = updatedAt;
-            this._Version = version;
+            this._Version = varVersion;
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -41,9 +41,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeString.</param>
         public AccountFormAttributesInner(CustomerAttributeString actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -53,21 +53,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeNumber.</param>
         public AccountFormAttributesInner(CustomerAttributeNumber actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccountFormAttributesInner" /> class
-        /// with the <see cref="CustomerAttributeInteger" /> class
-        /// </summary>
-        /// <param name="actualInstance">An instance of CustomerAttributeInteger.</param>
-        public AccountFormAttributesInner(CustomerAttributeInteger actualInstance)
-        {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -77,9 +65,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeBoolean.</param>
         public AccountFormAttributesInner(CustomerAttributeBoolean actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -89,9 +77,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeGuid.</param>
         public AccountFormAttributesInner(CustomerAttributeGuid actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -101,9 +89,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeDateTime.</param>
         public AccountFormAttributesInner(CustomerAttributeDateTime actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -113,9 +101,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeStringList.</param>
         public AccountFormAttributesInner(CustomerAttributeStringList actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -125,21 +113,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeNumberList.</param>
         public AccountFormAttributesInner(CustomerAttributeNumberList actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccountFormAttributesInner" /> class
-        /// with the <see cref="CustomerAttributeIntegerList" /> class
-        /// </summary>
-        /// <param name="actualInstance">An instance of CustomerAttributeIntegerList.</param>
-        public AccountFormAttributesInner(CustomerAttributeIntegerList actualInstance)
-        {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -149,9 +125,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeDateTimeList.</param>
         public AccountFormAttributesInner(CustomerAttributeDateTimeList actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -161,9 +137,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeGuidList.</param>
         public AccountFormAttributesInner(CustomerAttributeGuidList actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -173,9 +149,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of CustomerAttributeBooleanList.</param>
         public AccountFormAttributesInner(CustomerAttributeBooleanList actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
 
@@ -194,55 +170,47 @@ namespace Symend.Client.Customer.Model
             {
                 if (value.GetType() == typeof(CustomerAttributeBoolean))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeBooleanList))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeDateTime))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeDateTimeList))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeGuid))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeGuidList))
                 {
-                    this._actualInstance = value;
-                }
-                else if (value.GetType() == typeof(CustomerAttributeInteger))
-                {
-                    this._actualInstance = value;
-                }
-                else if (value.GetType() == typeof(CustomerAttributeIntegerList))
-                {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeNumber))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeNumberList))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeString))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(CustomerAttributeStringList))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: CustomerAttributeBoolean, CustomerAttributeBooleanList, CustomerAttributeDateTime, CustomerAttributeDateTimeList, CustomerAttributeGuid, CustomerAttributeGuidList, CustomerAttributeInteger, CustomerAttributeIntegerList, CustomerAttributeNumber, CustomerAttributeNumberList, CustomerAttributeString, CustomerAttributeStringList");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: CustomerAttributeBoolean, CustomerAttributeBooleanList, CustomerAttributeDateTime, CustomerAttributeDateTimeList, CustomerAttributeGuid, CustomerAttributeGuidList, CustomerAttributeNumber, CustomerAttributeNumberList, CustomerAttributeString, CustomerAttributeStringList");
                 }
             }
         }
@@ -254,7 +222,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeString</returns>
         public CustomerAttributeString GetCustomerAttributeString()
         {
-            return (CustomerAttributeString)this.ActualInstance;
+            return (CustomerAttributeString)ActualInstance;
         }
 
         /// <summary>
@@ -264,17 +232,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeNumber</returns>
         public CustomerAttributeNumber GetCustomerAttributeNumber()
         {
-            return (CustomerAttributeNumber)this.ActualInstance;
-        }
-
-        /// <summary>
-        /// Get the actual instance of `CustomerAttributeInteger`. If the actual instance is not `CustomerAttributeInteger`,
-        /// the InvalidClassException will be thrown
-        /// </summary>
-        /// <returns>An instance of CustomerAttributeInteger</returns>
-        public CustomerAttributeInteger GetCustomerAttributeInteger()
-        {
-            return (CustomerAttributeInteger)this.ActualInstance;
+            return (CustomerAttributeNumber)ActualInstance;
         }
 
         /// <summary>
@@ -284,7 +242,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeBoolean</returns>
         public CustomerAttributeBoolean GetCustomerAttributeBoolean()
         {
-            return (CustomerAttributeBoolean)this.ActualInstance;
+            return (CustomerAttributeBoolean)ActualInstance;
         }
 
         /// <summary>
@@ -294,7 +252,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeGuid</returns>
         public CustomerAttributeGuid GetCustomerAttributeGuid()
         {
-            return (CustomerAttributeGuid)this.ActualInstance;
+            return (CustomerAttributeGuid)ActualInstance;
         }
 
         /// <summary>
@@ -304,7 +262,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeDateTime</returns>
         public CustomerAttributeDateTime GetCustomerAttributeDateTime()
         {
-            return (CustomerAttributeDateTime)this.ActualInstance;
+            return (CustomerAttributeDateTime)ActualInstance;
         }
 
         /// <summary>
@@ -314,7 +272,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeStringList</returns>
         public CustomerAttributeStringList GetCustomerAttributeStringList()
         {
-            return (CustomerAttributeStringList)this.ActualInstance;
+            return (CustomerAttributeStringList)ActualInstance;
         }
 
         /// <summary>
@@ -324,17 +282,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeNumberList</returns>
         public CustomerAttributeNumberList GetCustomerAttributeNumberList()
         {
-            return (CustomerAttributeNumberList)this.ActualInstance;
-        }
-
-        /// <summary>
-        /// Get the actual instance of `CustomerAttributeIntegerList`. If the actual instance is not `CustomerAttributeIntegerList`,
-        /// the InvalidClassException will be thrown
-        /// </summary>
-        /// <returns>An instance of CustomerAttributeIntegerList</returns>
-        public CustomerAttributeIntegerList GetCustomerAttributeIntegerList()
-        {
-            return (CustomerAttributeIntegerList)this.ActualInstance;
+            return (CustomerAttributeNumberList)ActualInstance;
         }
 
         /// <summary>
@@ -344,7 +292,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeDateTimeList</returns>
         public CustomerAttributeDateTimeList GetCustomerAttributeDateTimeList()
         {
-            return (CustomerAttributeDateTimeList)this.ActualInstance;
+            return (CustomerAttributeDateTimeList)ActualInstance;
         }
 
         /// <summary>
@@ -354,7 +302,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeGuidList</returns>
         public CustomerAttributeGuidList GetCustomerAttributeGuidList()
         {
-            return (CustomerAttributeGuidList)this.ActualInstance;
+            return (CustomerAttributeGuidList)ActualInstance;
         }
 
         /// <summary>
@@ -364,7 +312,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of CustomerAttributeBooleanList</returns>
         public CustomerAttributeBooleanList GetCustomerAttributeBooleanList()
         {
-            return (CustomerAttributeBooleanList)this.ActualInstance;
+            return (CustomerAttributeBooleanList)ActualInstance;
         }
 
         /// <summary>
@@ -375,7 +323,7 @@ namespace Symend.Client.Customer.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AccountFormAttributesInner {\n");
-            sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
+            sb.Append("  ActualInstance: ").Append(ActualInstance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -386,7 +334,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this.ActualInstance, AccountFormAttributesInner.SerializerSettings);
+            return JsonConvert.SerializeObject(ActualInstance, AccountFormAttributesInner.SerializerSettings);
         }
 
         /// <summary>
@@ -477,30 +425,6 @@ namespace Symend.Client.Customer.Model
 
             try
             {
-                newAccountFormAttributesInner = new AccountFormAttributesInner(JsonConvert.DeserializeObject<CustomerAttributeInteger>(jsonString, AccountFormAttributesInner.SerializerSettings));
-                // deserialization is considered successful at this point if no exception has been thrown.
-                return newAccountFormAttributesInner;
-            }
-            catch (Exception exception)
-            {
-                // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CustomerAttributeInteger: {1}", jsonString, exception.ToString()));
-            }
-
-            try
-            {
-                newAccountFormAttributesInner = new AccountFormAttributesInner(JsonConvert.DeserializeObject<CustomerAttributeIntegerList>(jsonString, AccountFormAttributesInner.SerializerSettings));
-                // deserialization is considered successful at this point if no exception has been thrown.
-                return newAccountFormAttributesInner;
-            }
-            catch (Exception exception)
-            {
-                // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into CustomerAttributeIntegerList: {1}", jsonString, exception.ToString()));
-            }
-
-            try
-            {
                 newAccountFormAttributesInner = new AccountFormAttributesInner(JsonConvert.DeserializeObject<CustomerAttributeNumber>(jsonString, AccountFormAttributesInner.SerializerSettings));
                 // deserialization is considered successful at this point if no exception has been thrown.
                 return newAccountFormAttributesInner;
@@ -558,7 +482,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AccountFormAttributesInner);
+            return Equals(input as AccountFormAttributesInner);
         }
 
         /// <summary>
@@ -571,7 +495,7 @@ namespace Symend.Client.Customer.Model
             if (input == null)
                 return false;
 
-            return this.ActualInstance.Equals(input.ActualInstance);
+            return ActualInstance.Equals(input.ActualInstance);
         }
 
         /// <summary>
@@ -583,8 +507,8 @@ namespace Symend.Client.Customer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ActualInstance != null)
-                    hashCode = hashCode * 59 + this.ActualInstance.GetHashCode();
+                if (ActualInstance != null)
+                    hashCode = hashCode * 59 + ActualInstance.GetHashCode();
                 return hashCode;
             }
         }
@@ -626,11 +550,15 @@ namespace Symend.Client.Customer.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            switch(reader.TokenType) 
             {
-                return AccountFormAttributesInner.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartObject:
+                    return AccountFormAttributesInner.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartArray:
+                    return AccountFormAttributesInner.FromJson(JArray.Load(reader).ToString(Formatting.None));
+                default:
+                    return null;
             }
-            return null;
         }
 
         /// <summary>

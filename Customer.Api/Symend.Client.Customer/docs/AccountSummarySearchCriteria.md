@@ -1,11 +1,13 @@
-# Symend.Client.Customer.Model.AccountSummarySearchResultGuidPagedModel
+# Symend.Client.Customer.Model.AccountSummarySearchCriteria
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**List&lt;AccountSummarySearchResult&gt;**](AccountSummarySearchResult.md) |  | [optional] [readonly] 
-**Meta** | [**PagedMetadata**](PagedMetadata.md) |  | [optional] 
+**Email** | **string** |  | [optional] 
+**AccountKey** | **string** |  | [optional] 
+**Phone** | **string** |  | [optional] 
+**AccountId** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

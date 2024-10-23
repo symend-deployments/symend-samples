@@ -39,12 +39,12 @@ namespace Symend.Client.Customer.Model
         /// <param name="cursor">cursor.</param>
         /// <param name="direction">direction (default to &quot;asc&quot;).</param>
         /// <param name="orderBy">orderBy.</param>
-        public GuidPagedMetadata(int limit = 100, Guid? cursor = default(Guid?), string direction = "asc", OrderBy orderBy = default(OrderBy))
+        public GuidPagedMetadata(int limit = 100, Guid? cursor = default(Guid?), string direction = @"asc", OrderBy orderBy = default(OrderBy))
         {
             this.Limit = limit;
             this.Cursor = cursor;
             // use default value if no "direction" provided
-            this.Direction = direction ?? "asc";
+            this.Direction = direction ?? @"asc";
             this.OrderBy = orderBy;
         }
 
@@ -171,7 +171,7 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

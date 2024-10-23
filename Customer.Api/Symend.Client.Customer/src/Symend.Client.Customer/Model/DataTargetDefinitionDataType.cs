@@ -36,44 +36,49 @@ namespace Symend.Client.Customer.Model
         /// Enum Unknown for value: unknown
         /// </summary>
         [EnumMember(Value = "unknown")]
-        Unknown = 1,
+        Unknown,
 
         /// <summary>
         /// Enum String for value: string
         /// </summary>
         [EnumMember(Value = "string")]
-        String = 2,
+        String,
 
         /// <summary>
         /// Enum Integer for value: integer
         /// </summary>
         [EnumMember(Value = "integer")]
-        Integer = 3,
+        Integer,
 
         /// <summary>
         /// Enum Boolean for value: boolean
         /// </summary>
         [EnumMember(Value = "boolean")]
-        Boolean = 4,
+        Boolean,
 
         /// <summary>
         /// Enum DateTime for value: dateTime
         /// </summary>
         [EnumMember(Value = "dateTime")]
-        DateTime = 5,
+        DateTime,
 
         /// <summary>
         /// Enum Number for value: number
         /// </summary>
         [EnumMember(Value = "number")]
-        Number = 6,
+        Number,
 
         /// <summary>
         /// Enum Guid for value: guid
         /// </summary>
         [EnumMember(Value = "guid")]
-        Guid = 7
+        Guid,
 
+        /// <summary>
+        /// Enum DateOnly for value: dateOnly
+        /// </summary>
+        [EnumMember(Value = "dateOnly")]
+        DateOnly
     }
 
 }

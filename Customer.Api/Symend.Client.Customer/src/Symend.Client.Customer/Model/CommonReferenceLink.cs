@@ -73,13 +73,13 @@ namespace Symend.Client.Customer.Model
             /// </summary>
             [EnumMember(Value = "HEAD")]
             HEAD = 6
-
         }
 
 
         /// <summary>
         /// Gets or Sets Method
         /// </summary>
+        /// <example>GET</example>
         [DataMember(Name = "method", EmitDefaultValue = false)]
         public MethodEnum? Method { get; set; }
         /// <summary>
@@ -98,12 +98,14 @@ namespace Symend.Client.Customer.Model
         /// <summary>
         /// Gets or Sets Href
         /// </summary>
+        /// <example>/thing/123</example>
         [DataMember(Name = "href", EmitDefaultValue = false)]
         public string Href { get; set; }
 
         /// <summary>
         /// Gets or Sets Rel
         /// </summary>
+        /// <example>self</example>
         [DataMember(Name = "rel", EmitDefaultValue = false)]
         public string Rel { get; set; }
 
@@ -196,7 +198,7 @@ namespace Symend.Client.Customer.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -36,32 +36,31 @@ namespace Symend.Client.Customer.Model
         /// Enum Unknown for value: unknown
         /// </summary>
         [EnumMember(Value = "unknown")]
-        Unknown = 1,
+        Unknown,
 
         /// <summary>
         /// Enum Draft for value: draft
         /// </summary>
         [EnumMember(Value = "draft")]
-        Draft = 2,
+        Draft,
 
         /// <summary>
         /// Enum PendingChanges for value: pendingChanges
         /// </summary>
         [EnumMember(Value = "pendingChanges")]
-        PendingChanges = 3,
+        PendingChanges,
 
         /// <summary>
         /// Enum Published for value: published
         /// </summary>
         [EnumMember(Value = "published")]
-        Published = 4,
+        Published,
 
         /// <summary>
         /// Enum Archived for value: archived
         /// </summary>
         [EnumMember(Value = "archived")]
-        Archived = 5
-
+        Archived
     }
 
 }

@@ -36,50 +36,61 @@ namespace Symend.Client.Customer.Model
         /// Enum Unknown for value: unknown
         /// </summary>
         [EnumMember(Value = "unknown")]
-        Unknown = 1,
+        Unknown,
 
         /// <summary>
         /// Enum KeyDate for value: keyDate
         /// </summary>
         [EnumMember(Value = "keyDate")]
-        KeyDate = 2,
+        KeyDate,
 
         /// <summary>
         /// Enum Customer for value: customer
         /// </summary>
         [EnumMember(Value = "customer")]
-        Customer = 3,
+        Customer,
 
         /// <summary>
         /// Enum Contact for value: contact
         /// </summary>
         [EnumMember(Value = "contact")]
-        Contact = 4,
+        Contact,
 
         /// <summary>
         /// Enum Billing for value: billing
         /// </summary>
         [EnumMember(Value = "billing")]
-        Billing = 5,
+        Billing,
 
         /// <summary>
         /// Enum Account for value: account
         /// </summary>
         [EnumMember(Value = "account")]
-        Account = 6,
+        Account,
 
         /// <summary>
         /// Enum Uncategorized for value: uncategorized
         /// </summary>
         [EnumMember(Value = "uncategorized")]
-        Uncategorized = 7,
+        Uncategorized,
 
         /// <summary>
         /// Enum Property for value: property
         /// </summary>
         [EnumMember(Value = "property")]
-        Property = 8
+        Property,
 
+        /// <summary>
+        /// Enum InsightEnablement for value: insightEnablement
+        /// </summary>
+        [EnumMember(Value = "insightEnablement")]
+        InsightEnablement,
+
+        /// <summary>
+        /// Enum CureScoresArchetypes for value: cureScoresArchetypes
+        /// </summary>
+        [EnumMember(Value = "cureScoresArchetypes")]
+        CureScoresArchetypes
     }
 
 }

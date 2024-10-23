@@ -41,9 +41,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of Rule.</param>
         public RuleGroupRulesInner(Rule actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace Symend.Client.Customer.Model
         /// <param name="actualInstance">An instance of RuleGroup.</param>
         public RuleGroupRulesInner(RuleGroup actualInstance)
         {
-            this.IsNullable = false;
-            this.SchemaType= "anyOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+            IsNullable = false;
+            SchemaType= "anyOf";
+            ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
 
@@ -74,11 +74,11 @@ namespace Symend.Client.Customer.Model
             {
                 if (value.GetType() == typeof(Rule))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else if (value.GetType() == typeof(RuleGroup))
                 {
-                    this._actualInstance = value;
+                    _actualInstance = value;
                 }
                 else
                 {
@@ -94,7 +94,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of Rule</returns>
         public Rule GetRule()
         {
-            return (Rule)this.ActualInstance;
+            return (Rule)ActualInstance;
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>An instance of RuleGroup</returns>
         public RuleGroup GetRuleGroup()
         {
-            return (RuleGroup)this.ActualInstance;
+            return (RuleGroup)ActualInstance;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Symend.Client.Customer.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RuleGroupRulesInner {\n");
-            sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
+            sb.Append("  ActualInstance: ").Append(ActualInstance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -126,7 +126,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this.ActualInstance, RuleGroupRulesInner.SerializerSettings);
+            return JsonConvert.SerializeObject(ActualInstance, RuleGroupRulesInner.SerializerSettings);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Symend.Client.Customer.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as RuleGroupRulesInner);
+            return Equals(input as RuleGroupRulesInner);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Symend.Client.Customer.Model
             if (input == null)
                 return false;
 
-            return this.ActualInstance.Equals(input.ActualInstance);
+            return ActualInstance.Equals(input.ActualInstance);
         }
 
         /// <summary>
@@ -203,8 +203,8 @@ namespace Symend.Client.Customer.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ActualInstance != null)
-                    hashCode = hashCode * 59 + this.ActualInstance.GetHashCode();
+                if (ActualInstance != null)
+                    hashCode = hashCode * 59 + ActualInstance.GetHashCode();
                 return hashCode;
             }
         }
@@ -246,11 +246,15 @@ namespace Symend.Client.Customer.Model
         /// <returns>The object converted from the JSON string</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.TokenType != JsonToken.Null)
+            switch(reader.TokenType) 
             {
-                return RuleGroupRulesInner.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartObject:
+                    return RuleGroupRulesInner.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartArray:
+                    return RuleGroupRulesInner.FromJson(JArray.Load(reader).ToString(Formatting.None));
+                default:
+                    return null;
             }
-            return null;
         }
 
         /// <summary>
