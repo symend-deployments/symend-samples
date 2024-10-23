@@ -1,0 +1,16 @@
+additionalProperties:  
+  packageName: Symend.Client.Customer
+  equatable: true
+  nullableReferenceTypes: false
+  sortParamsByRequiredFlag: true
+  useSwashbuckle: false
+  useDateTimeOffset: false
+  useFrameworkReference: true
+  enumNameSuffix: "Enum"
+  enumValueSuffix: ""
+reservedWordsMapping:
+  version: _version
+  operator: _operator
+parameterNameMapping:
+  version: _version
+  operator: _operator
