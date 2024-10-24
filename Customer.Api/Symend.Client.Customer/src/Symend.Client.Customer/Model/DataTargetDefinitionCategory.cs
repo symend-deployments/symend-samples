@@ -80,6 +80,17 @@ namespace Symend.Client.Customer.Model
         [EnumMember(Value = "property")]
         Property = 8
 
+        /// <summary>
+        /// Enum InsightEnablement for value: insightEnablement
+        /// </summary>
+        [EnumMember(Value = "insightEnablement")]
+        InsightEnablement = 9,
+
+        /// <summary>
+        /// Enum CureScoresArchetypes for value: cureScoresArchetypes
+        /// </summary>
+        [EnumMember(Value = "cureScoresArchetypes")]
+        CureScoresArchetypes = 10
     }
 
 }
