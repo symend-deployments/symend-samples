@@ -1087,6 +1087,7 @@ components:
             - datetime
             - number
             - guid
+            - dateOnly
         isPii:
           type: boolean
         category:
@@ -1099,6 +1100,8 @@ components:
             - account
             - uncategorized
             - property
+            - insightEnablement
+            - cureScoresArchetypes
         structureType:
           type: string
           enum:

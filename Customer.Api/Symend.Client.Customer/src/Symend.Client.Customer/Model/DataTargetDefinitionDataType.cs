@@ -72,8 +72,13 @@ namespace Symend.Client.Customer.Model
         /// Enum Guid for value: guid
         /// </summary>
         [EnumMember(Value = "guid")]
-        Guid = 7
+        Guid = 7,
 
+        /// <summary>
+        /// Enum DateOnly for value: dateOnly
+        /// </summary>
+        [EnumMember(Value = "dateOnly")]
+        DateOnly = 8
     }
 
 }
