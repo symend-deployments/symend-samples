@@ -78,7 +78,7 @@ namespace Symend.Client.Customer.Model
         /// Enum Property for value: property
         /// </summary>
         [EnumMember(Value = "property")]
-        Property = 8
+        Property = 8,
 
         /// <summary>
         /// Enum InsightEnablement for value: insightEnablement
